@@ -1,6 +1,6 @@
 class HoursController < EmployeesController
 
-    post '/bcs/new_employee/hours' do
+    post '/bcs/new_employee/hours' do #creates hour instance after signup
         @hour = Hour.new
         @hour[:employee_id] = params[:id]
         @hour[:badge_id] = params[:badge_id]
