@@ -1,0 +1,2 @@
+class WeeksController < EmployeesController
+end 

@@ -1,0 +1,18 @@
+<%= yield %>
+                
+<%= flash[:error] %>  </p>          
+<%= flash[:notice] %></p>
+
+
+<nav class="crumbs">
+    <ul class= "nav_ul">
+    <aside class= "nav_menu"><b>MENU</b></aside>
+        <p><form action= "/bcs/profile/:id" method="POST">
+        <input type="hidden" name= "_method" value="delete">
+        <input type="hidden" value="delete profile" disabled>
+        </form></p>
+        <p class="crumb"><a class= "nav_button" href="mailto:BeerCheeseSoup.hr@protonmail.ch?subject=Beer%20Cheese%20Soup%20Employee%20request"><b>Contact Human Resources</b></a></p>
+        include full name and badge ID with request
+        <p class="crumb"><a class= "nav_button" href="/logout"><b>Logout</a></b></p>
+    </ul>
+</nav>

@@ -1,0 +1,2 @@
+class HumanResourcesController < EmployeesController
+end 

@@ -1,0 +1,2 @@
+class HoursController < EmployeesController
+end 
