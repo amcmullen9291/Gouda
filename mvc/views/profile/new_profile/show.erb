@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+        <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+        <title>Welcome</title>
+    <head>
+    <body>
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image"> <img src="/android-chrome-192x192.png" class="rounded" width="155"> </div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">Welcome to BCS! </h4> <span></span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                        <form action = "/bcs/profile/:badge_id" method= "get">    
+                        <table>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Details</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td><%= @employee.first_name %> <%= @employee.last_name %> </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td>Badge ID:</td>
+                                <td><input type= "text" name= "employee[badge_id]" readonly="readonly" value= <%= @employee.badge_id %>></td>
+                                <td></td>
+                                <td></td>
+                                <td>Password:</td>
+                                <td><input type= "text" name= "employee[password]" readonly="readonly" value= <%= @employee.password %>></td>
+                                <td></td>
+                             </tr>
+                             <tr>
+                                <td>Email :</td>
+                                <td><%= @employee.email %></td>
+                                <td></td>
+                                <td></td>
+                                <td>Telephone:</td>
+                                <td><%= @employee.telephone %></td>
+                                <td></td>
+                             </tr>
+                             <tr>
+                                <td>Department:</td>
+                                <td><%= @employee.dept_id %></td>
+                                <td></td>
+                                <td></td>
+                                <td>Shift:</td>
+                                <td><%= @employee.shift_id %></td>
+                                <td></td>
+                            </tr>
+                            </table>
+                        </div>
+                         </div>
+                         <br>
+                         <%= @confirmation %>
+                         <br>
+                        <label class= "workStatus">Work Status: <input type= "color" name= "active" value= "#24E00E" disabled>
+                        <label class= "workStatus">Progress:<progress id="progress" max="100" value="100"> </progress>
+                        <br>
+                        <p id= "confirm-acct"> PLEASE LOG IN TO CONTINUE WITH TIMECLOCK.</p>
+                        <div class="button mt-2 d-flex flex-row align-items-center"> 
+                        <button type= "submit" class="btn btn-sm btn-outline-primary w-100" disabled >Go To Profile</button></form></div>
+                        <form action= "/bcs/new_employee/hours" method="post">
+                            <input type="text" hidden name="id" value= <%=@session[:id]%>>
+                            <input type="text" hidden name="badge_id" value= <%=@session[:badge_id]%>>
+                            <input type="submit" value="Log In">
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>
+ </html>

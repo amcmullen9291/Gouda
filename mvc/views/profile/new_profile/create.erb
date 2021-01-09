@@ -1,0 +1,64 @@
+<html> 
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/welcome.css">
+        <title>BCS New Employees</title>
+    </head>
+    <body id= registrations>
+        <h2 class= "intro1"> Welcome to </h2>
+        <h1 class= "intro2"> Beer Cheese Soup!</h1>
+        <div>
+            <form class= "signup" action = '/bcs/new_employee' method = 'post'>
+                <h4>Create a profile. </h4>
+                <div><nobr><label><b>Name:</b><input type= "text" name= "employee[first_name]" placeholder= "first" required: true required="required"><span></span><input type= "text" name= "employee[last_name]" placeholder= "last" required: true required="required"></nobr></label></div>
+                <label><b>BCS Location:</b>
+                <div>
+                <input type= "text" name= "employee[location]" placeholder= "City" required: true required="required"></label>
+                <br></div>
+                <p class= "float-container">
+                    <div id="float-child">
+                    <label><b>Email:</b><input type= "email" name= "employee[email]" placeholder= "enter email" required: true required="required"></label></div>
+                    <div id="float-child">
+                    <label><b>Telephone:</b><input type= "tel" name= "employee[telephone]" placeholder= "phone" required: true required="required"></label></div>
+                    <aside>
+                    <p><label><b>Password: </b><input type= "password" name= "employee[password]" required: true required="required"></label>
+                    </aside>
+                    <div>
+                    <p> YOUR new <u>Employee ID</u> :</p>
+                    <input type="text" id=":badge_id" name= "employee[badge_id]" require: true required= "required" readonly value= <%=p SecureRandom.hex(5)%>></input>
+                    <p> This ID Number Was Issued by Human Resouces. You will receive a badge in the next day or so. <br />
+                        Timecards need to be submitted by the end of the day Saturday. <br/>
+                        Use your Employee ID to Log into the TimeClock System. <br/>
+                    </p>
+                    </div>
+                    <section>
+                    <aside class= "flex-container">
+                        <div class= "flex-child">
+                            <p>Select your shift:</p>
+                            <input type="radio" id="first" name= "employee[shift_id]" value="1"><nobr><label for="first" required: true required="required">First</label>
+                            <input type="radio" id="second" name= "employee[shift_id]" value="2"><nobr><label for="second">Second</label>
+                            <input type="radio" id="third" name= "employee[shift_id]" value="3"><nobr><label for="third">Third</label>
+                        </div>
+                        <div class= "flex-child">
+                            <p> Department:</p>
+                            <input type="radio" id="work1" name= "employee[dept_id]" value="production"><nobr><label for="production" required: true required="required">production</label>
+                            <input type="radio" id="work2" name= "employee[dept_id]" value="maintenance"><nobr><label for="maintenance">maintenance</label>
+                            <input type="radio" id="work3" name= "employee[dept_id]" value="quality"><nobr><label for="quality">quality</label>
+                            <input type="radio" id="work4" name= "employee[dept_id]" value="shipping"><nobr><label for="shipping">shipping</label>
+                        <div>
+                    </aside>
+                </section>
+                <label class= "workStatus">Work Status: <input type= "color" name= "active" value= "#24E00E" disabled>
+                <label class= "workStatus">Progress:<progress id="progress" max="100" value="79"> </progress>
+                <br>
+                <button id= "register" type="submit">Join BCS</button>
+                </form>
+        </div>
+    </body>
+    <footer class="normalFoot">
+        <p>©2020 BeerCheeseSoup Inc.</p>
+    </footer>
+</html>
