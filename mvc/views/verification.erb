@@ -1,0 +1,80 @@
+<html class= "verification-html">
+    <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/stylesheets/login-graphics.css">
+    <title>Log-In</title>
+    </head>
+    <body>
+        <% flash.each do |msg| %>
+            <%= msg %>
+        <% end %>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    Logged Hours Time Clock
+                </div>
+                <div class="col-lg-12 login-form">
+                        <div class="col-lg-12 login-form">
+                        <form action= "/bcs/profile/show" method= "get">
+                            <div class="form-group">
+                                <label class="form-control-label" >Employee ID</label>
+                                <input type= "text" name= "employee[badge_id]" class= "form-control" required: true required="required">
+                            <br>
+                                <label class="form-control-label" >Password</label>
+                                <input type="password" name= "employee[password]" class="form-control" required: true required="required">
+                            </div>
+                            <div class="col-lg-12 loginbttm"> 
+                            <div class="col-lg-6 login-btm login-text">
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                            <label id = "verifyBCS">Enter  <button type= "submit" class="btn btn-outline-primary">BCS</button></label>
+                            <a href= "/bcs/registrations"> Or, <u>Return to Registration</u></a>
+                            </form>
+                            <div id= "HR-PORTAL">
+                            </br>
+                            <p id= "HR-TABLE"> Or, Pick Your Poison:</p>
+                        <form action= "/bcs/login-test" method= "get"> 
+                        <p></p>
+                        <label id= "HR-TABLE"> "Amazingly few discotheques provide jukeboxes" <input type ="text" name= "surface"></lable>
+                        <br>
+                            <input type="radio" name="breed"value="0">Brie</input>
+                            <input type="radio" name="breed"value="1">Gruyere</input>
+                            <input type="radio" name="breed"value="3">Mozzarella</input>
+                            <input type="radio" name="breed"value="7">Goat Cheese</input>
+                            <input type="radio" name="breed"value="11">Monterey Jack</input>
+                            <input type="radio" name="breed"value="10">String Cheese</input>                                
+                            <input type="radio" name="breed"value="9">Swiss Cheese</input>
+                            <input type="radio" name="breed"value="6">Pepper Jack Cheese</input>
+                            <input type="radio" name="breed"value="8">Colby Cheese</input>                                
+                            <input type="radio" name="breed"value="5">Gorgonzola</input>
+                            <input type="radio" name="breed"value="2">Feta</input>
+
+                            <p></p>
+                            <input type="submit" value="submit">
+                            <a href= "#">I digress</a>
+                            </form>
+                            <% if flash.now[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine. -Rick Blaine"%>
+                            <%= @lighthearted %>
+                            <%end%>
+                            </div>
+                            </br>
+                            </br>
+                            <a href= "#HR-PORTAL" class="btn btn-outline-primary"> H.R. Portal</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col-lg-3 col-md-2"></div>
+    </div>
+</div>  
+</body>
+</html

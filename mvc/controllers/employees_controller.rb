@@ -70,41 +70,65 @@ class EmployeesController < Sinatra::Base
       end
     end
 
-    post '/bcs/profile/:badge_id/new_hours' do 
+    get '/bcs/profile/:badge_id/edit' do  
       @session = session
-      @day= "Sunday" #only here so profile re-populates date
-      @date = Hour.new 
-      @week =  @date.date_of_next(@day)
-
-      Hour.connection #unneeded now that config is aware...
-      daily = Date.new
-      @counter = params[:counter]
-      @shift =  daily.cwday  
-      @logged_time = params[:time] 
-
-      @newhours = Hour.find_by(:id => @session[:hours_id])
-      @newhours.update(params[:hours]) 
-      @newhours.timecard(@counter, @shift, @logged_time)
-      @counter = @counter.to_i
-      @counter +=1
-      @counter = @counter.to_s
-      if @counter == "3"
-          @counter.revert
-      end 
-      @newhours[:counter] = @counter
-      @newhours.save  
-
-      @d = Time.now #for params[:time]
-      flash[:notice] =  "Time Card has been Updated." 
-      erb :'/profile/show'
-    end
+      @employee = Employee.find_by(:id => @session[:id])
+      @date = Hour.new
+        @day= "Sunday"
+        @week =  @date.date_of_next(@day)
       
-    delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
-        @hours = Hour.find(:id => @session[:hour_id])
-        # @hours = Employee.hour
-        # @weeks = Employee.left_outer_joins(:hour)
-        @hours.destroy
-        flash[:notice] = "Time Card Submitted. Thank You." #flash wont pass through 2nd route
-        redirect "/bcs/profile/:badge_id/hours"
+      erb :"/profile/edit" 
+    end 
+
+    post '/bcs/profile/:badge_id/modify' do
+      @session = session
+      @employee = Employee.find_by(:id => @session[:id])
+        @employee.update(params[:employee])
+        @employee.save
+
+        @session[:badge_id] = @employee[:badge_id]
+        @session[:last_name] = @employee[:last_name]
+        @session[:id] = @employee[:id]
+        @session[:shift_id] = @employee[:shift_id]
+        @session[:first_name] = @employee[:first_name]
+        @session[:dept_id] = @employee[:dept_id]
+        @session[:email] = @employee[:email]
+        @session[:telephone] = @employee[:telephone]
+        @session[:password] = @employee[:password]
+
+        @date = Hour.new
+        @day= "Sunday"
+        @week =  @date.date_of_next(@day)
+
+        @newhours = Hour.new
+        @d = Time.now
+        flash[:notice] = "profile updated"
+        erb :"profile/show"
     end
+
+
+    get '/logout' do
+        session.clear
+        session[:id] = nil
+        flash[:notice] = "Thank you"
+        redirect '/'
+    end
+
+    delete '/bcs/profile/:id' do 
+      @employee = Employee.find_by(:id => params[:id])  
+      @employee.destroy
+      flash[:notice] = "profile deleted"
+      redirect "/"
+    end
+  #Model uses Employee has_many :hours, :dependent => :destroy, and 
+  #Employee has_many :weeks, :dependent => :destroy. 
+  
+#------------------------Delete----------------------->  
+  delete '/bcs/hr/profile/:id' do  #delete route from HR
+    @employee = Employee.find_by(:id => params[:id])  
+    @employee.destroy
+    flash[:notice] = "All records for: <%=@session[first_name]%> <%=@session[last_name]%> have been deleted."
+    
+    "/hr_profile/show.erb"
+  end
 end
