@@ -1,11 +1,16 @@
 <html>
    <head>
-      <title>HTML Image as link</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+      <title><%=@session[:badge_id]%></title>
    </head>
    <body>
       <br>
       <form action="/bcs/hours" method="post">
-      <button type= "submit"> Click To Continue</button>
+      <button type= "submit">Click To Continue</button>
       <a href="/bcs/hours">
          <img alt="Continue To Profile" src="public/android-chrome-512x512.png">
       </a>

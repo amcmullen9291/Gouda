@@ -19,10 +19,10 @@
     </thead>
     <tbody>
     <tr>
-           <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
-           <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
-           <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
-           <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
+        <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
+        <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
+        <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
+        <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
        <td></td>
        <td></td>
        <td></td>
@@ -78,11 +78,12 @@
     </tbody>
     </table>
         <section> #add CSS but only for this "section tag"; like a different color, 
-                    # and do the method for @weeks.count in the Weeks controller/model. 
-                    #current week is already in @session hash
-                    # define a variable in controller as @weeks.first (ie: @current_week)
-            <p> "<b><%= @weeks.count %></b> Weeks Strong. Leading the Way Since <%= @current_week[:week_ending]%>."<p/>
-            </br>
+            <% if @weeks.count > 1%>
+                <p> "<b><%= @weeks.count %></b> Weeks Strong. Leading the Way Since <%= @first_week[:week_ending]%>."</p>
+            <% else%>
+                <p> "think of something for here..."</p>
+            <% end%>
+                </br> 
             <p><i> "Be the change that you wish to see in the world. Ghandi"</i></p>
         </section>
         <form action= "/bcs/profile/:id/reset" method = "post"> #may need CSS

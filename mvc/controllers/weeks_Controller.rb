@@ -1,11 +1,7 @@
 class WeeksController < EmployeesController
 
-    post "/bcs/profile/:badge_id/post_hours" do 
-        #before you do shotgun, Post/create weeks instance,
-        #do @weeks = Weeks.select |week| :employee_id => @session[:id]...
-        #and define @current_week = @weeks.first {for @weeks[:week_ending]}
-        #AND READ YOUR NOTEBOOK NOTES!
-        @day= "Sunday" #not used- hidden @session data used to fill space; <tr> data
+    post "/bcs/profile/:badge_id/post_hours" do         
+        @day= "Sunday" #not used; @session data in hidden input fields used to fill space in <tr> 
         @date = Hour.new 
         @week =  @date.date_of_next(@day)
 
@@ -32,13 +28,9 @@ class WeeksController < EmployeesController
       @timecard.save  #current week's/ Hours values already stored in @sessions
 
     ####### start here######  
-        # @weeks = Employee.left_outer_joins(:weeks) 
-        #join method for employee and week/
-        #may get asked about Employee.weeks
-        #join is for total # of week and start date
-        #may need a show.erb to detail weeks instances. (no, you won't)                                 #may need another show.erb to detail weeks instances.
-        @weeks = []
-        flash[:notice] = "Time Card Submitted. Thank You." #flash wont pass through 2nd route
-        erb :"profile/weeks/index"
+        @weeks = Weeks.select {|week| week[:employee_id] => @session[:id]}
+        @first_week = @weeks.first
+        flash[:notice] = "Time Card Submitted. Thank You." 
+        erb :"profile/weeks/index", :layout => false
     end
 end  

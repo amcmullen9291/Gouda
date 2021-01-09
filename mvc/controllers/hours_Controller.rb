@@ -10,7 +10,7 @@ class HoursController < EmployeesController
 
     post '/bcs/hours'
         @hour = Hour.new
-        @hour[:employee_id] = @session[:id]
+        @hour[:employee_id] = params[:id]
         @hour[:badge_id] = @session[:badge_id]
         @hour.save
         redirect "/bcs/profile/:badge_id/hours"
