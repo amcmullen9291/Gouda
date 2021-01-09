@@ -1,0 +1,245 @@
+.beginning {
+    background-color:#FFDAB9;
+    background-image: ('public\images\logo.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  } /*intro page*/
+
+  .card-body {background-color: #41108b;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%2351ea22' fill-opacity='0.4' d='M0 17.83V0h17.83a3 3 0 0 1-5.66 2H5.9A5 5 0 0 1 2 5.9v6.27a3 3 0 0 1-2 5.66zm0 18.34a3 3 0 0 1 2 5.66v6.27A5 5 0 0 1 5.9 52h6.27a3 3 0 0 1 5.66 0H0V36.17zM36.17 52a3 3 0 0 1 5.66 0h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 0 1 0-5.66V52H36.17zM0 31.93v-9.78a5 5 0 0 1 3.8.72l4.43-4.43a3 3 0 1 1 1.42 1.41L5.2 24.28a5 5 0 0 1 0 5.52l4.44 4.43a3 3 0 1 1-1.42 1.42L3.8 31.2a5 5 0 0 1-3.8.72zm52-14.1a3 3 0 0 1 0-5.66V5.9A5 5 0 0 1 48.1 2h-6.27a3 3 0 0 1-5.66-2H52v17.83zm0 14.1a4.97 4.97 0 0 1-1.72-.72l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1 0-5.52l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43c.53-.35 1.12-.6 1.72-.72v9.78zM22.15 0h9.78a5 5 0 0 1-.72 3.8l4.44 4.43a3 3 0 1 1-1.42 1.42L29.8 5.2a5 5 0 0 1-5.52 0l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1-.72-3.8zm0 52c.13-.6.37-1.19.72-1.72l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43a5 5 0 0 1 5.52 0l4.43-4.43a3 3 0 1 1 1.42 1.41l-4.44 4.43c.36.53.6 1.12.72 1.72h-9.78zm9.75-24a5 5 0 0 1-3.9 3.9v6.27a3 3 0 1 1-2 0V31.9a5 5 0 0 1-3.9-3.9h-6.27a3 3 0 1 1 0-2h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 1 1 2 0v6.27a5 5 0 0 1 3.9 3.9h6.27a3 3 0 1 1 0 2H31.9z'%3E%3C/path%3E%3C/svg%3E");
+  }  /* log-in.erb; page background*/
+
+  #registrations {
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  } /*sign-up.erb page background*/
+
+  .intro1 {
+    border-radius: 15px;
+    text-emphasis-color: #F0E68C;
+    background: linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%);;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    text-align: center;
+    width: auto;
+    height: auto;
+  }
+
+  .intro2 {
+    border-radius: 15px;
+    text-emphasis-color: #c77d0e;
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px;
+    text-align: center;
+    width: auto;
+    height: auto;
+  } /*the "welcome to beer cheese" banner- signup.erb*/
+
+.signup{
+  background-color: rgb(250, 225, 143);
+  border-style: groove;
+  border-width: 1em;
+  border-color: black rgb(92, 89, 89);
+
+} /*registration form*/
+
+.in-form{
+  background-color: gray;
+  border-style: groove;
+  border-width: 1em;
+  border-color: black rgb(92, 89, 89);
+} /*sign-in.erb*/
+
+.button15{
+  animation:bouncy 5s infinite linear;
+  position:absolute;
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+.button15:hover{
+  color:#000000;
+  background-color:#FFFFFF;
+}
+  @media all and (max-width:30em){
+    .button15{
+      display:block;
+      margin:0.4em auto;};
+
+  @keyframes button15{
+    0%   {top:0em}
+    40%  {top:0em}
+    43%  {top:-0.9em}
+    46%  {top:0em}
+    48%  {top:-0.4em}
+    50%  {top:0em}
+    100% {top:0em}
+    }
+    } /*the bouncing "delicious" button on start page home.erb*/
+
+/*the flex and float container css are for the new employee signup form*/
+.flex-container {
+    display: flex;
+  }
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+  }
+
+.flex-child:first-child {
+    margin-right: 20px;
+  }
+
+.float-container {
+    border: solid 0.3em transparent;
+    border-bottom-color: rgb(53, 14, 14);
+    width: auto;
+}
+#float-child {
+    margin-right: 20px;
+}
+
+.normalFoot {
+  text-align: left;
+} /* the footer for all pages except the home.erb*/
+
+.workStatus {
+  text-align: right;
+} /*test; green approval signal @ the bottom of the signup.erb*/
+
+#time card heading {
+  font: 1.2em "Fira Sans", sans-serif;
+  text-align: center;
+} /*time card heading*/
+
+.loggedHoursSheet {
+  border: 4mm ridge grey;
+  background: grey;
+  font-family: "Gill Sans", sans-serif;
+} /*the border and bkgnd of the time card*/
+
+/*-------------- user profile template-----------------------------*/
+.profile-body {
+  margin: 0 auto;
+  padding: 0;
+  background: #222;
+}
+
+.left {
+  left: 25px;
+}
+
+.right {
+  right: 25px;
+}
+
+.center {
+  text-align: center;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 25px;
+}
+
+#gradient {
+  background: #999955;
+  background-image: linear-gradient(#DAB046 20%, #D73B25 20%, #D73B25 40%, #C71B25 40%, #C71B25 60%, #961A39 60%, #961A39 80%, #601035 80%);
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 100%;
+  height: 150px;
+}
+
+#gradient:after {
+  content: "";
+  position: absolute;
+  background: #E9E2D0;
+  left: 50%;
+  margin-top: -67.5px;
+  margin-left: -270px;
+  padding-left: 20px;
+  border-radius: 5px;
+  width: 520px;
+  height: 275px;
+  z-index: -1;
+}
+
+#profile-card {
+  position: absolute;
+  width: 450px;
+  height: 225px;
+  padding: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  left: 50%;
+  top: 67.5px;
+  margin-left: -250px;
+  background: #E9E2D0;
+  box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
+  z-index: 5;
+}
+
+#card img {
+  width: 150px;
+  float: left;
+  border-radius: 5px;
+  margin-right: 20px;
+  -webkit-filter: sepia(1);
+  -moz-filter: sepia(1);
+  filter: sepia(1);
+}
+
+#profile-card h2 {
+  font-family: courier;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 15pt;
+}
+
+#profie-card p {
+  font-family: courier;
+  color: #555;
+  font-size: 13px;
+}
+
+#profile-card span {
+  font-family: courier;
+}
+
+.right_bottom {
+color: black;
+}
+
+.left_bottom {
+color: red;
+}
+
+#title_badge {
+color: black;
+}
+
+#title_dept {
+color: black;
+}
+/*------------------------------------------*/
+
+.badge_id {
+  background: pink;
+}

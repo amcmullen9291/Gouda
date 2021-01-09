@@ -1,0 +1,45 @@
+.bootstrap-table .table:not(.table-condensed),
+.bootstrap-table .table:not(.table-condensed) > tbody > tr > th,
+.bootstrap-table .table:not(.table-condensed) > tfoot > tr > th,
+.bootstrap-table .table:not(.table-condensed) > thead > tr > td,
+.bootstrap-table .table:not(.table-condensed) > tbody > tr > td,
+.bootstrap-table .table:not(.table-condensed) > tfoot > tr > td {
+    padding: 8px;
+}
+
+.bootstrap-table .table.table-no-bordered > thead > tr > th,
+.bootstrap-table .table.table-no-bordered > tbody > tr > td {
+    border-right: 2px solid transparent;
+}
+
+.bootstrap-table .table.table-no-bordered > tbody > tr > td:last-child {
+    border-right: none;
+}
+
+.search_results {
+    display: table;
+    height: auto;
+    position: relative;
+    clear: both;
+    border-top: 1px solid hsl(0, 0%, 87%);
+    border-left: 1px solid hsl(0, 0%, 87%);
+    outline: 0 solid transparent;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #dddddd;
+    border-right: none;
+    border-collapse: collapse !important;
+    border-radius: 1px;
+    width: 100%;
+    padding: 0;
+}
+
+.search_results_body {
+    padding: 8px;
+    line-height: 24px;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+}
