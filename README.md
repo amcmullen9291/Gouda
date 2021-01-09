@@ -9,3 +9,5 @@ Current employees in DB are: Jason Winthrope, Rhys Scotts, Ginger Beckham, Hunte
 The H.R. email address is active. Feel free to email suggestions and comments.
 
 Some of the images were created using the Bootstrap gem. The logo was created with the help of Favicon.io.
+
+I transplants this repo towards the end of development. The entire commit history can be seen at https://github.com/amcmullen9291/BeerCheeseSoup.git
