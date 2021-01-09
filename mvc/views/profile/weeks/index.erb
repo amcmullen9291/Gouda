@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+        <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+        <title>Submitted Time Card</title>
+    <head>
+    <body>
+    <table> 
+    <title><%=@session[:badge_id] %></title>
+        <h3> <%=@session[last_name]%>, <%=@session[:first_name]%></h3>
+    <thead>
+        <tr>
+            <th colspan="8"><b>Submitted Hours: </b></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+           <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
+           <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
+           <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
+           <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+    </tr>
+    <tr>
+    <td colspan="8"><c>Time Log</c></td>
+    </tr>
+      <tr>
+      <td></td>
+      <td>Monday</td>
+      <td>Tuesday</td>
+      <td>Wednesday</td>
+      <td>Thursday</td>
+      <td>Friday</td>
+      <td>Saturday</td>
+      <td>Sunday</td>
+      </tr>
+      <tr>
+      <td>Clock In</td>
+      <td><input type="time" name= "weekday[monday_in]" readonly="readonly" value= <%= @session[:monday_in]%>></td>
+      <td><input type="time" name= "weekday[tuesday_in]" readonly="readonly" value= <%= @session[:tuesday_in]%>></td>
+      <td><input type="time" name= "weekday[wednesday_in]" readonly="readonly" value= <%= @session[:wednesday_in]%>></td>
+      <td><input type="time" name= "weekday[thursday_in]" readonly="readonly" value= <%= @session[:thursday_in]%>></td>
+      <td><input type="time" name= "weekday[friday_in]" readonly="readonly" value= <%= @session[:friday_in]%>></td>
+      <td><input type="time" name= "weekday[saturday_in]" readonly="readonly" value= <%= @session[:saturday_in]%>></td>
+      <td><input type="time" name= "weekday[sunday_in]" readonly="readonly" value= <%= @session[:sunday_in]%>></td>
+      </tr>
+        <tr>
+            <td colspan="8">></td>
+        </tr> 
+        <tr>
+            <td colspan="8">></td>
+        </tr>  
+      <tr>
+      <td>Clock Out</td>
+      <td><input type="time" name= "weekday[monday_out]" readonly="readonly" value= <%= @session[:monday_out]%></td>
+      <td><input type="time" name= "weekday[tuesday_out]" readonly="readonly" value= <%= @session[:tuesday_out]%></td>
+      <td><input type="time" name= "weekday[wednesday_out]" readonly="readonly" value= <%= @session[:wednesday_out]%></td>
+      <td><input type="time" name= "weekday[thursday_out]" readonly="readonly" value= <%= @session[:thursday_out]%></td>
+      <td><input type="time" name= "weekday[friday_out]" readonly="readonly" value= <%= @session[:friday_out]%></td>
+      <td><input type="time" name= "weekday[saturday_out]" readonly="readonly" value= <%= @session[:saturday_out]%></td>
+      <td><input type="time" name= "weekday[sunday_out]" readonly="readonly" value= <%= @session[:sunday_out]%></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td colspan="8">Hours Logged With :</td>
+      </tr>
+      <tr>
+      <td colspan="8"><%= @session[:dept_id] %> Department</td>
+      </tr>
+    </tbody>
+    </table>
+        <section> #add CSS but only for this "section tag"; like a different color, 
+                    # and do the method for @weeks.count in the Weeks controller/model. 
+                    #current week is already in @session hash
+                    # define a variable in controller as @weeks.first (ie: @current_week)
+            <p> "<b><%= @weeks.count %></b> Weeks Strong. Leading the Way Since <%= @current_week[:week_ending]%>."<p/>
+            </br>
+            <p><i> "Be the change that you wish to see in the world. Ghandi"</i></p>
+        </section>
+        <form action= "/bcs/profile/:id/reset" method = "post"> #may need CSS
+            <input type="hidden" name="_method" value="DELETE">
+            <input type= "hidden" name= "id" value= <%=@session[:hours_id]%>> 
+            <a href="/bcs/profile/:id/reset">Back to BCS Profile</a>
+        </form>
+        </body>
+</html>

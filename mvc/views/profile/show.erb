@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+        <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+        <title>Employee Profile</title>
+    <head>
+    <body>
+    <main id = "boxes">
+    <div id= "box1">
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image"><img src="/android-chrome-192x192.png" class="rounded" width="155"></div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">Beer Cheese Soup</h4> <span></span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                            <table>
+                            <tr>
+                                <th>Employee Details:</th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th><a href= "#box3">Logged Hours</a></th>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td><%= @session[:first_name] %> <%= @session[:last_name] %> </td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/bcs/profile/:badge_id/edit" method= "get" >Edit Info</a></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                            <td>Badge ID:</td>
+                            <td><%= @session[:badge_id] %></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                         </tr>
+                         <tr>
+                            <td>Email :</td>
+                            <td><%= @session[:email] %></td>
+                            <td></td>
+                            <td></td>
+                            <td>Telephone:</td>
+                            <td><%= @session[:telephone] %></td>
+                            <td></td>
+                         </tr>
+                         <tr>
+                            <td>Department:</td>
+                            <td><%= @session[:dept_id] %></td>
+                            <td></td>
+                            <td></td>
+                            <td>Shift:</td>
+                            <td><%= @session[:shift_id] %></td>
+                            <td></td>
+                        </tr>                            
+                        </table>
+                        </div>
+                         </div>
+                         <br>
+                         <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id= "box2">
+        </div>
+        <div id= "box3">
+        <div id= "hours_table">
+               <h2>     </h2>
+        <form action= "/bcs/profile/:badge_id/new_hours" method= "post">
+        <input type="hidden" name="_method" value="patch">
+        <table id="hours_table">
+        <thead>
+            <tr>
+                <th colspan="8"><u>Your Hours: </u></th>
+            </tr>
+          <tr>
+                <th colspan="8">Week Of: <%= @date.date_of_next(@day) %></th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+               <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
+               <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
+               <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
+               <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+        </tr>
+        <tr>
+        <td colspan="8"><c>Clocked In</c></td>
+        </tr>
+          <tr>
+          <td></td>
+          <td>Monday</td>
+          <td>Tuesday</td>
+          <td>Wednesday</td>
+          <td>Thursday</td>
+          <td>Friday</td>
+          <td>Saturday</td>
+          <td>Sunday</td>
+          </tr>
+          <tr>
+          <td></td>
+          <td><input type="time" name= "weekday[monday_in]" readonly="readonly" value= <%= @session[:monday_in]%>></td>
+          <td><input type="time" name= "weekday[tuesday_in]" readonly="readonly" value= <%= @session[:tuesday_in]%>></td>
+          <td><input type="time" name= "weekday[wednesday_in]" readonly="readonly" value= <%= @session[:wednesday_in]%>></td>
+          <td><input type="time" name= "weekday[thursday_in]" readonly="readonly" value= <%= @session[:thursday_in]%>></td>
+          <td><input type="time" name= "weekday[friday_in]" readonly="readonly" value= <%= @session[:friday_in]%>></td>
+          <td><input type="time" name= "weekday[saturday_in]" readonly="readonly" value= <%= @session[:saturday_in]%>></td>
+          <td><input type="time" name= "weekday[sunday_in]" readonly="readonly" value= <%= @session[:sunday_in]%>></td>
+          </tr>
+              <tr>
+                <td colspan="8"><c>Clocked Out</c></td>
+            </tr> 
+            <tr>
+            <td></td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+            <td>Saturday</td>
+            <td>Sunday</td>
+            </tr>  
+          <tr>
+          <td></td>
+          <td><input type="time" name= "weekday[monday_out]" readonly="readonly" value= <%= @session[:monday_out]%></td>
+          <td><input type="time" name= "weekday[tuesday_out]" readonly="readonly" value= <%= @session[:tuesday_out]%></td>
+          <td><input type="time" name= "weekday[wednesday_out]" readonly="readonly" value= <%= @session[:wednesday_out]%></td>
+          <td><input type="time" name= "weekday[thursday_out]" readonly="readonly" value= <%= @session[:thursday_out]%></td>
+          <td><input type="time" name= "weekday[friday_out]" readonly="readonly" value= <%= @session[:friday_out]%></td>
+          <td><input type="time" name= "weekday[saturday_out]" readonly="readonly" value= <%= @session[:saturday_out]%></td>
+          <td><input type="time" name= "weekday[sunday_out]" readonly="readonly" value= <%= @session[:sunday_out]%></td>
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+            <td colspan="8">Current Time:</td>
+          </tr>
+          <tr>
+          <td><input type="integer" name= "counter" hidden value= <%= @session[:counter]%>></td>
+          <td colspan="8"><c><input type= "time" readonly="readonly" name= "time" value= <%=@d.strftime("%R")%>></c></td>
+          </tr>
+        </tbody>
+    </table>
+        <input type= "hidden" name= "hours[id]" required: true required="required" value= <%= @session[:hours_id] %>>
+            <p><input type="submit" id="profile_submit_btn" class="btn btn-sm btn-outline-primary w-100" value="Record Time">
+            Please record <u>ALL</u> hours before submitting timecard.</p> 
+           <a href='#'>Return to Profile</a>
+            </form>
+            <a href ="/bcs/profile/:badge_id/post_hours">Submit Completed Timecard</a>
+        </div>
+        </div>
+        </main>
+        <form action= "/bcs/profile/<%=@session[:id]%>" method="post"> 
+            <input type="hidden" name="_method" value="DELETE">
+            <input type= "hidden" name= "id" value= <%=@session[:id]%>> 
+            <input type="submit" id= "delete-btn" value="Delete Profile?">
+        </form>
+    </body>
+ </html>

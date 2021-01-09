@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+        <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+        <title>Edit Profile</title>
+    <head>
+    <body>
+    <main id = "boxes">
+    <div id= "box1">
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <div class="image"> <img src="/android-chrome-192x192.png" class="rounded" width="155"> </div>
+                    <div class="ml-3 w-100">
+                        <h4 class="mb-0 mt-0">Beer Cheese Soup Inc.</h4> <span></span>
+                        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                        <form action= "/bcs/profile/:badge_id/modify" method="post"> 
+                        <table>
+                            <tr>
+                                <th> Edit Employee Details:</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th><a href= "#hours_table">Logged Hours</a></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td><%= @session[:first_name] %> <%= @session[:last_name] %></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Badge ID:</td>
+                                <td><%= @session[:badge_id] %></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Password:</td>
+                                <td><input type= "text" name= "employee[password]" required: true required="required" value= <%= @session[:password] %>></td>
+                             </tr>
+                             <tr>
+                                <td>Email:</td>
+                                <td><input type= "text" name= "employee[email]" required: true required="required" value= <%= @session[:email] %>></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Phone:</td>
+                                <td><input type= "text" name= "employee[telephone]" required: true required="required" value= <%= @session[:telephone] %>></td>
+                             </tr>
+                             <tr>
+                                <td>Department:</td>
+                                <td><input type= "text" name= "employee[dept_id]" required: true required="required" value= <%= @session[:dept_id] %>></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Shift:</td>
+                                <td><input type= "text" name= "employee[shift_id]" required: true required="required" value= <%= @session[:shift_id] %>></td>
+                            </tr>
+                            </table>
+                            <div id= "seeMore" >
+                            <p> Changes not saved. Please review profile information then Submit Profile </p>
+                                <a href="#">Return to Edit Page</a>
+                              </formm>
+                          </div>
+                          <input type= "hidden" name= "employee[id]" required: true required="required" value= <%= @session[:id] %>
+                          <input type="hidden" name="_method" value="PATCH">
+                          <input type="submit" name="Save Changes">                            
+                          </form>
+                            <a href="#seeMore">return to profile</a>
+                        </div>
+                         </div>
+                         <br>
+                         <br>
+                        <div class="button mt-2 d-flex flex-row align-items-center"> 
+                        <form action ='bcs/hr//:badge_id/new_hours'  method= "post" ><button  type= "submit" class="btn btn-sm btn-outline-primary w-100" disabled>Add Hours</button>
+                        </form>
+                        <form action = "bcs/hr/profile/:badge_id/post_hours"  method= "post" ><button class="btn btn-sm btn-primary w-100 ml-2" disabled>Submit Timecard</button> </form></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id= "box2">
+        </div>
+        <div id = "box3s">
+            <h2> week of: <%= @date.date_of_next(@day) %></h2>
+            <br>
+            </form>
+        </div>
+        </main>
+    </body>
+ </html>

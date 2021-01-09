@@ -10,7 +10,7 @@ class HoursController < EmployeesController
 
     get '/bcs/profile/:badge_id/hours' do
         @session = session 
-        @newhours = Hour.find_by(:badge_id => @session[:badge_id])
+        @newhours = Hour.find_by_badge_id(:badge_id => @session[:badge_id])
         @session[:monday_in] = @newhours[:monday_in]
         @session[:monday_out] = @newhours[:monday_out]
         @session[:tuesday_in] = @newhours[:tuesday_in]
@@ -33,5 +33,43 @@ class HoursController < EmployeesController
         @week =  @date.date_of_next(@day)    
         @d = Time.now
         erb :"profile/show"
+    end
+
+    post '/bcs/profile/:badge_id/new_hours' do 
+        @session = session
+        @day= "Sunday" #only here so profile re-populates date
+        @date = Hour.new 
+        @week =  @date.date_of_next(@day)
+
+        Hour.connection #unneeded now that config is aware...
+        daily = Date.new
+        @counter = params[:counter]
+        @shift =  daily.cwday  
+        @logged_time = params[:time] 
+
+        @newhours = Hour.find_by(:id => @session[:hours_id])
+        @newhours.update(params[:hours]) 
+        @newhours.timecard(@counter, @shift, @logged_time)
+        @counter = @counter.to_i
+        @counter +=1
+        @counter = @counter.to_s
+        if @counter == "3"
+            @counter.revert
+        end 
+        @newhours[:counter] = @counter
+        @newhours.save  
+
+        @d = Time.now #for params[:time]
+        flash[:notice] =  "Time Card has been Updated." 
+        erb :'/profile/show'
+    end
+
+    delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
+        @hours = Hour.find(:id => @session[:hour_id])
+        # @hours = Employee.hour
+        # @weeks = Employee.left_outer_joins(:hour)
+        @hours.destroy
+        flash[:notice] = "Time Card Submitted. Thank You." #flash wont pass through 2nd route
+        redirect "/bcs/profile/:badge_id/hours"
     end
 end 
