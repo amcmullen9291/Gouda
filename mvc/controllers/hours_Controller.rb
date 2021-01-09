@@ -8,6 +8,14 @@ class HoursController < EmployeesController
         redirect '/'
     end
 
+    post '/bcs/hours'
+        @hour = Hour.new
+        @hour[:employee_id] = @session[:id]
+        @hour[:badge_id] = @session[:badge_id]
+        @hour.save
+        redirect "/bcs/profile/:badge_id/hours"
+    end
+
     get '/bcs/profile/:badge_id/hours' do
         @session = session 
         @newhours = Hour.find_by_badge_id(:badge_id => @session[:badge_id])
@@ -64,12 +72,11 @@ class HoursController < EmployeesController
         erb :'/profile/show'
     end
 
+
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
-        @hours = Hour.find(:id => @session[:hour_id])
-        # @hours = Employee.hour
-        # @weeks = Employee.left_outer_joins(:hour)
+        @hours = Hour.find(:id => @session[:hour_id]) #or params[:id]
         @hours.destroy
-        flash[:notice] = "Time Card Submitted. Thank You." #flash wont pass through 2nd route
-        redirect "/bcs/profile/:badge_id/hours"
+        
+        erb :passage
     end
 end 

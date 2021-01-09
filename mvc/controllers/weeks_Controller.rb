@@ -38,6 +38,7 @@ class WeeksController < EmployeesController
         #join is for total # of week and start date
         #may need a show.erb to detail weeks instances. (no, you won't)                                 #may need another show.erb to detail weeks instances.
         @weeks = []
+        flash[:notice] = "Time Card Submitted. Thank You." #flash wont pass through 2nd route
         erb :"profile/weeks/index"
     end
 end  
