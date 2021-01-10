@@ -18,7 +18,7 @@ Specs:
 #CRUD routes for Hours 
 - [x] Ensure that users can't modify content created by other users
 - [x] Include user input validations
-#required="required" field validations
+#required="required" input field  attribute and model validations
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code 
 #yes
