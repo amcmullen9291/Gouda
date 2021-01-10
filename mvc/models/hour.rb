@@ -9,9 +9,6 @@ class Hour < ActiveRecord::Base
     belongs_to :employee
     validates_presence_of :badge_id
     validates_presence_of :employee_id    
-    validates_presence_of :counter
-    validates_inclusion_of :counter, :in => 1..2 
-
     def timecard (counter, shift, logged_time)
         if counter == "1"
             if shift == "1"

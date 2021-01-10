@@ -6,20 +6,20 @@ class CreateHoursTable < ActiveRecord::Migration[6.1]
         t.string :dept_id
         t.string :last_name
         t.string :week_ending
-        t.time :monday_in, default: 0
-        t.time :monday_out, default: 0
-        t.time :tuesday_in, default: 0
-        t.time :tuesday_out, default: 0
-        t.time :wednesday_in, default: 0
-        t.time :wednesday_out, default: 0
-        t.time :thursday_in, default: 0
-        t.time :thursday_out, default: 0
-        t.time :friday_in, default: 0
-        t.time :friday_out, default: 0
-        t.time :saturday_in, default: 0
-        t.time :saturday_out, default: 0
-        t.time :sunday_in, default: 0
-        t.time :sunday_out, default: 0
+        t.datetime :monday_in, default: 0
+        t.datetime :monday_out, default: 0
+        t.datetime :tuesday_in, default: 0
+        t.datetime :tuesday_out, default: 0
+        t.datetime :wednesday_in, default: 0
+        t.datetime :wednesday_out, default: 0
+        t.datetime :thursday_in, default: 0
+        t.datetime :thursday_out, default: 0
+        t.datetime :friday_in, default: 0
+        t.datetime :friday_out, default: 0
+        t.datetime :saturday_in, default: 0
+        t.datetime :saturday_out, default: 0
+        t.datetime :sunday_in, default: 0
+        t.datetime :sunday_out, default: 0
         t.string :counter, default: 1
         t.integer :employee_id
       end
