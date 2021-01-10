@@ -1,6 +1,8 @@
 require 'sinatra/flash'
 require 'rack-flash'
 
+require_relative '../../config/environment'
+
 class EmployeesController < Sinatra::Base
   configure do
     set :public_folder, 'public'
@@ -18,6 +20,8 @@ class EmployeesController < Sinatra::Base
   end
 
   get '/bcs/login' do 
+    @session = session
+    session.clear
     erb :verification, :layout => false
   end
 
