@@ -47,7 +47,7 @@ class EmployeesController < Sinatra::Base
     @session = session
     @session[:id] = @employee.id
     @session[:badge_id] = @employee.badge_id
-
+    
     flash[:notice] = "New Profile Created."
 
     erb :"profile/new_profile/show"

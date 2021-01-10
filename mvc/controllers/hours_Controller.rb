@@ -5,6 +5,10 @@ class HoursController < EmployeesController
     post '/bcs/new_employees/hours' do #creates hour instance after signup
         puts params
         @session = session
+        @day= "Sunday"
+        @date = Hour.new 
+        @week =  @date.date_of_next(@day) 
+
         @newhours = Hour.new(params[:hour])
         @newhours.save
         erb :home
@@ -55,7 +59,6 @@ class HoursController < EmployeesController
         @logged_time = params[:time] 
 
         @newhours = Hour.find_by_badge_id(badge_id = @session[:badge_id])
-        @newhours.update(params[:hours]) 
         @newhours.timecard(@counter, @shift, @logged_time)
         @counter = @counter.to_i
         @counter +=1
