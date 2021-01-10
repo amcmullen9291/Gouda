@@ -47,6 +47,11 @@ class EmployeesController < Sinatra::Base
     @session = session
     @session[:id] = @employee.id
     @session[:badge_id] = @employee.badge_id
+    @session[:dept_id] = @employee.dept_id
+    @day= "Sunday"
+    @date = Hour.new 
+    @week =  @date.date_of_next(@day) 
+
     
     flash[:notice] = "New Profile Created."
 

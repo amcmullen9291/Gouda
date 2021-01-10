@@ -76,7 +76,7 @@
                         <form action= "/bcs/new_employees/hours" method="post">
                             <input type="text" hidden name="hour[employee_id]" value= <%=@session[:id]%>>
                             <input type="text" hidden name="hour[badge_id]" value= <%=@session[:badge_id]%>>
-                            <input type="text" hidden name="hour[dept_id]" value= <%=@session[:badge_id]%>>
+                            <input type="text" hidden name="hour[dept_id]" value= <%=@session[:dept_id]%>>
                             <input type="text" hidden name="hour[week_ending]" value= <%= @date.date_of_next(@day)%>>                            
                             <button id= "register" type="submit">Log In</button>
                         </form>

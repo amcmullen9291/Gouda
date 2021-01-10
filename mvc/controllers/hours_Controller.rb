@@ -54,6 +54,7 @@ class HoursController < EmployeesController
         puts params
         Hour.connection #unneeded now that config is aware...
         daily = Date.new
+        
         @counter = params[:counter]
         @shift =  daily.cwday  
         @logged_time = params[:time] 
