@@ -1,6 +1,8 @@
 require 'active_record'
 require 'date'
 require_relative '../../config/environment'
+require_relative 'employee.rb'
+require_relative 'hour.rb'
 
 class Week < ActiveRecord::Base
     belongs_to :employee

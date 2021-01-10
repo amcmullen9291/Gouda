@@ -1,6 +1,9 @@
 require 'active_record'
 require 'date'
 require_relative '../../config/environment'
+require_relative 'hour.rb'
+require_relative 'week.rb'
+
 
 class Employee < ActiveRecord::Base
     has_secure_password 

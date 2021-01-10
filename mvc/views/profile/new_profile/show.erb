@@ -74,8 +74,8 @@
                         <div class="button mt-2 d-flex flex-row align-items-center"> 
                         <button type= "submit" class="btn btn-sm btn-outline-primary w-100" disabled >Go To Profile</button></form></div>
                         <form action= "/bcs/new_employee/hours" method="post">
-                            <input type="text" hidden name="id" value= <%=@session[:id]%>>
-                            <input type="text" hidden name="badge_id" value= <%=@session[:badge_id]%>>
+                            <input type="text" hidden name="hours[employee_id]" value= <%=@session[:id]%>>
+                            <input type="text" hidden name="hours[badge_id]" value= <%=@session[:badge_id]%>>
                             <input type="submit" value="Log In">
                         </form>
                         </div>

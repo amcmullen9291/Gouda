@@ -8,10 +8,8 @@ class HoursController < EmployeesController
         redirect '/'
     end
 
-    post '/bcs/hours'
-        @hour = Hour.new
-        @hour[:employee_id] = params[:id]
-        @hour[:badge_id] = @session[:badge_id]
+    post '/bcs/hours' do
+        @hour = Hour.new(params[:hours])
         @hour.save
         redirect "/bcs/profile/:badge_id/hours"
     end
@@ -61,9 +59,9 @@ class HoursController < EmployeesController
         @counter = @counter.to_i
         @counter +=1
         @counter = @counter.to_s
-        if @counter == "3"
+        if @counter == "3" then 
             @counter.revert
-        end 
+        end
         @newhours[:counter] = @counter
         @newhours.save  
 
