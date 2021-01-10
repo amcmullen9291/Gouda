@@ -47,7 +47,7 @@ class HoursController < EmployeesController
 
     post '/bcs/profile/:badge_id/new_hours' do 
         @session = session
-
+        puts params
         Hour.connection #unneeded now that config is aware...
         daily = Date.new
         @counter = params[:counter]
@@ -72,7 +72,7 @@ class HoursController < EmployeesController
 
         @d = Time.now #for params[:time]
         flash[:notice] =  "Time Card has been Updated." 
-        erb :'/profile/show'
+        erb :"/profile/show"
     end
 
 
