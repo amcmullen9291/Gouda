@@ -9,7 +9,7 @@
         <title>New Hours</title>
     <head>
     <body>
-    <form action= "/new_hours/<%=@session[:hour_id]%>" method= "post">
+    <form action= "/new_hours/:hours_id>" method= "post">
     <table id="hours_table">
     <thead>
         <tr>
@@ -22,9 +22,9 @@
     <tbody>
     <tr>
         <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
-        <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
-        <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
-        <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
+        <td><input type= "text" name= "hours[dept_id]" value= <%= @session[:dept_id]%>></td>
+        <td><input type= "text" name= "hours[badge_id]" value= <%=@session[:badge_id] %>></td>
+        <td><input type= "text" name= "hours[last_name]" value= <%=@session[:last_name] %>></td>
     <td></td>
     <td></td>
     <td></td>
