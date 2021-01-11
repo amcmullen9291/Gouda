@@ -73,7 +73,6 @@ class HoursController < EmployeesController
         redirect '/bcs/profile/:badge_id/hours' 
     end
 
-
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
         @hours = Hour.find(:id => @session[:hour_id]) #or params[:id]
         @hours.destroy

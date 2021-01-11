@@ -46,32 +46,32 @@
     <tr>
     <td></td>
     <% if @session[:monday_in].empty?%>
-        <td><input type= "time" name= "hours[monday_in]"></td>
+        <td><input type= "time" name= "hours[monday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:monday_in]%></td>
     <%end%>
     <% if @session[:tuesday_in].empty?%>
-        <td><input type= "time" name= "hours[tuesday_in]"></td>
+        <td><input type= "time" name= "hours[tuesday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:tuesday_in]%></td>
     <%end%>
     <% if @session[:wednesday_in].empty?%>
-        <td><input type= "time" name= "hours[wednesday_in]"></td>
+        <td><input type= "time" name= "hours[wednesday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:wednesday_in]%></td>
     <%end%>
     <% if @session[:thursday_in].empty?%>
-        <td><input type= "time" name= "hours[thursday_in]"</td>
+        <td><input type= "time" name= "hours[thursday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:thursday_in]%></td>
     <%end%>
     <% if @session[:friday_in].empty?%>
-        <td><input type= "time" name= "hours[friday_in]"</td>
+        <td><input type= "time" name= "hours[friday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:friday_in]%></td>
     <%end%>  
     <% if @session[:saturday_in].empty?%>  
-        <td><input type= "time" name= "hours[saturday_in]"</td>
+        <td><input type= "time" name= "hours[saturday_in]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:saturday_in]%></td>
     <%end%>
@@ -97,37 +97,37 @@
     <tr>
     <td></td>
     <% if @session[:monday_out].empty?%>
-        <td><input type= "time" name= "hours[monday_out]"></td>
+        <td><input type= "time" name= "hours[monday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:monday_out]%></td>
     <%end%>
     <% if @session[:tuesday_out].empty?%>
-        <td><input type= "time" name= "hours[tuesday_out]"></td>
+        <td><input type= "time" name= "hours[tuesday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:tuesday_out]%></td>
     <%end%>
     <% if @session[:wednesday_out].empty?%>
-        <td><input type= "time" name= "hours[wednesday_out]"></td>
+        <td><input type= "time" name= "hours[wednesday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:wednesday_out]%></td>
     <%end%>
     <% if @session[:thursday_out].empty?%>
-        <td><input type= "time" name= "hours[thursday_out]"</td>
+        <td><input type= "time" name= "hours[thursday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:thursday_out]%></td>
     <%end%>
     <% if @session[:friday_out].empty?%>
-        <td><input type= "time" name= "hours[friday_out]"</td>
+        <td><input type= "time" name= "hours[friday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:friday_out]%></td>
     <%end%>  
     <% if @session[:saturday_out].empty?%>  
-        <td><input type= "time" name= "hours[saturday_out]"</td>
+        <td><input type= "time" name= "hours[saturday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>
         <td><%=@session[:saturday_out]%></td>
     <%end%>
     <% if @session[:sunday_out].empty?%>
-        <td><input type= "time" name= "hours[sunday_out]"</td>
+        <td><input type= "time" name= "hours[sunday_out]" min= "<%=@d.strftime("%R")%>" max= "<%=@d.strftime("%R")%>"></td>
     <%else%>    
         <td><%=@session[:sunday_out]%></td>
     <%end%>
