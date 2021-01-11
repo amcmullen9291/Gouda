@@ -77,8 +77,6 @@
         <div id= "box3">
         <div id= "hours_table">
                <h2>     </h2>
-        <form action= "/bcs/profile/:badge_id/new_hours" method= "post">
-        <input type="hidden" name="_method" value="patch">
         <table id="hours_table">
         <thead>
             <tr>
@@ -137,7 +135,7 @@
             </tr>  
           <tr>
           <td></td>
-          <td><%=@session[:monday_out]%></td>
+          <td><%= @session[:monday_out]%></td>
           <td><%= @session[:tuesday_out]%></td>
           <td><%= @session[:wednesday_out]%></td>
           <td><%= @session[:thursday_out]%></td>
@@ -156,8 +154,7 @@
           </tr>
         </tbody>
     </table>
-        <input type= "hidden" name= "hours[id]" required: true required="required" value= <%= @session[:hours_id] %>>
-            <p><button id= "register" type="submit">Record Time</button>
+            <p><a href="/bcs/profile/:badge_id/hours/edit">Record Time</a>
             Please record <u>ALL</u> hours before submitting timecard.</p> 
            <a href='#'>Return to Profile</a>
             </form>

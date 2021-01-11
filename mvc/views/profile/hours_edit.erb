@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+        <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+        <title>New Hours</title>
+    <head>
+    <body>
+    <form action= "/new_hours/<%=@session[:hour_id]%>" method= "post">
+    <table id="hours_table">
+    <thead>
+        <tr>
+            <th colspan="8"><u>Your Hours: </u></th>
+        </tr>
+    <tr>
+            <th colspan="8">Week Of: <%= @date.date_of_next(@day) %></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
+        <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @session[:dept_id]%>></td>
+        <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
+        <td><input type= "text" name= "hours[last_name]" hidden value= <%=@session[:last_name] %>></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td colspan="8"><c>Clocked In</c></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td>Monday</td>
+    <td>Tuesday</td>
+    <td>Wednesday</td>
+    <td>Thursday</td>
+    <td>Friday</td>
+    <td>Saturday</td>
+    <td>Sunday</td>
+    </tr>
+    <tr>
+    <td></td>
+    <% if @session[:monday_in].empty?%>
+        <td><input type= "time" name= "hours[monday_in]"></td>
+    <%else%>
+        <td><%=@session[:monday_in]%></td>
+    <%end%>
+    <% if @session[:tuesday_in].empty?%>
+        <td><input type= "time" name= "hours[tuesday_in]"></td>
+    <%else%>
+        <td><%=@session[:tuesday_in]%></td>
+    <%end%>
+    <% if @session[:wednesday_in].empty?%>
+        <td><input type= "time" name= "hours[wednesday_in]"></td>
+    <%else%>
+        <td><%=@session[:wednesday_in]%></td>
+    <%end%>
+    <% if @session[:thursday_in].empty?%>
+        <td><input type= "time" name= "hours[thursday_in]"</td>
+    <%else%>
+        <td><%=@session[:thursday_in]%></td>
+    <%end%>
+    <% if @session[:friday_in].empty?%>
+        <td><input type= "time" name= "hours[friday_in]"</td>
+    <%else%>
+        <td><%=@session[:friday_in]%></td>
+    <%end%>  
+    <% if @session[:saturday_in].empty?%>  
+        <td><input type= "time" name= "hours[saturday_in]"</td>
+    <%else%>
+        <td><%=@session[:saturday_in]%></td>
+    <%end%>
+    <% if @session[:sunday_in].empty?%>
+        <td><input type= "time" name= "hours[sunday_in]"</td>
+    <%else%>    
+        <td><%=@session[:sunday_in]%></td>
+    <%end%>
+    </tr>
+        <tr>
+            <td colspan="8"><c>Clocked Out</c></td>
+        </tr> 
+        <tr>
+        <td></td>
+        <td>Monday</td>
+        <td>Tuesday</td>
+        <td>Wednesday</td>
+        <td>Thursday</td>
+        <td>Friday</td>
+        <td>Saturday</td>
+        <td>Sunday</td>
+        </tr>  
+    <tr>
+    <td></td>
+    <% if @session[:monday_out].empty?%>
+        <td><input type= "time" name= "hours[monday_out]"></td>
+    <%else%>
+        <td><%=@session[:monday_out]%></td>
+    <%end%>
+    <% if @session[:tuesday_out].empty?%>
+        <td><input type= "time" name= "hours[tuesday_out]"></td>
+    <%else%>
+        <td><%=@session[:tuesday_out]%></td>
+    <%end%>
+    <% if @session[:wednesday_out].empty?%>
+        <td><input type= "time" name= "hours[wednesday_out]"></td>
+    <%else%>
+        <td><%=@session[:wednesday_out]%></td>
+    <%end%>
+    <% if @session[:thursday_out].empty?%>
+        <td><input type= "time" name= "hours[thursday_out]"</td>
+    <%else%>
+        <td><%=@session[:thursday_out]%></td>
+    <%end%>
+    <% if @session[:friday_out].empty?%>
+        <td><input type= "time" name= "hours[friday_out]"</td>
+    <%else%>
+        <td><%=@session[:friday_out]%></td>
+    <%end%>  
+    <% if @session[:saturday_out].empty?%>  
+        <td><input type= "time" name= "hours[saturday_out]"</td>
+    <%else%>
+        <td><%=@session[:saturday_out]%></td>
+    <%end%>
+    <% if @session[:sunday_out].empty?%>
+        <td><input type= "time" name= "hours[sunday_out]"</td>
+    <%else%>    
+        <td><%=@session[:sunday_out]%></td>
+    <%end%>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+        <td colspan="8">Current Time:</td>
+    </tr>
+    <tr>
+    <td><input type="integer" name= "counter" hidden value= <%= @session[:counter]%>></td>
+    <td colspan="8"><c><input type= "time" readonly="readonly" name= "time" value= <%=@d.strftime("%R")%>></c></td>
+    </tr>
+    </tbody>
+    </table>
+    <input type="hidden" name="_method" value="patch">
+    <input type= "hidden" name= "id"  value= <%= @session[:hours_id] %>>
+        <p><button id= "register" type="submit">Record Time</button>
+        Please record <u>ALL</u> hours before submitting timecard.</p> 
+        <a href='#'>Return to Profile</a>
+        </form>
+    </body>
+    </html>

@@ -14,7 +14,7 @@ class HoursController < EmployeesController
         erb :home
     end
 
-    post '/bcs/hours' do #do the same as about post with form
+    post '/bcs/hours' do #do the same as above post with form (from :passage)
         @hour = Hour.new
         @hour[:employee_id] = params[:id]
         @hour[:badge_id] = @session[:badge_id]
@@ -46,37 +46,31 @@ class HoursController < EmployeesController
         @date = Hour.new 
         @week =  @date.date_of_next(@day)    
         @d = Time.now
+
         erb :"profile/show"
     end
 
-    post '/bcs/profile/:badge_id/new_hours' do 
-        @session = session
-        puts params
-        Hour.connection #unneeded now that config is aware...
-        daily = Date.new
-        
-        @counter = params[:counter]
-        @shift =  daily.cwday  
-        @logged_time = params[:time] 
-
-        @newhours = Hour.find_by_badge_id(badge_id = @session[:badge_id])
-        @newhours.timecard(@counter, @shift, @logged_time)
-        @counter = @counter.to_i
-        @counter +=1
-        @counter = @counter.to_s
-        if @counter == "3" then 
-            @counter.revert
-        end
-        @newhours[:counter] = @counter
-        @newhours.save  
-
-        @day= "Sunday" #only here so profile re-populates date
-        @date = Hour.new 
+    get '/bcs/profile/:badge_id/hours/edit' do
+        @sessions= session
+        @newhours = Hour.find_by(:id => @session[:hours_id])
+        @date = Hour.new #for date
+        @day= "Sunday"
         @week =  @date.date_of_next(@day)
+        @d = Time.now
 
-        @d = Time.now #for params[:time]
+        erb :"/profile/hours_edit"
+    end
+
+    post '/new_hours/:hour_id' do 
+        @session = session
+        # Hour.connection #unneeded now that config is aware...
+        #possible to insert date read only?
+        @newhours = Hour.find_by(:id => @session[:id])
+        @newhours.update(params[:hours])
+        @newhours.save
+    
         flash[:notice] =  "Time Card has been Updated." 
-        erb :"/profile/show"
+        redirect '/bcs/profile/:badge_id/hours' 
     end
 
 
