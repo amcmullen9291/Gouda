@@ -67,6 +67,7 @@ class EmployeesController < Sinatra::Base
       @session[:id] = @employee[:id]
       @session[:shift_id] = @employee[:shift_id]
       @session[:first_name] = @employee[:first_name]
+      @session[:last_name] = @employee[:last_name]
       @session[:dept_id] = @employee[:dept_id]
       @session[:email] = @employee[:email]
       @session[:telephone] = @employee[:telephone]

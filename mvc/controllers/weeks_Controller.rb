@@ -1,16 +1,15 @@
 require_relative '../../config/environment'
-require_relative '../models/hour.rb'
-
+require_relative '../models/week.rb'
 
 class WeeksController < EmployeesController
 
-    post "/bcs/profile/:badge_id/post_hours" do         
+    post "/bcs/post_week/:badge_id" do         
         @day= "Sunday" #not used; @session data in hidden input fields used to fill space in <tr> 
         @date = Hour.new 
         @week =  @date.date_of_next(@day)
 
         @session = session  
-        @timecard = Week.new
+        @timecard = Week.new(params[:week])
         @timecard[:employee_id] = @session[:id]
         @timecard[:badge_id] = @session[:badge_id]
         @timecard[:dept_id] = @session[:dept_id]
@@ -29,7 +28,7 @@ class WeeksController < EmployeesController
         @timecard[:sunday_in] = @session[:monday_in]
         @timecard[:sunday_out] = @session[:monday_in]
         @session[:week_id] = @timecard[:id]
-        @timecard.save  #current week's/ Hours values already stored in @sessions
+        @timecard.save  #current "week's Hour values already stored in @sessions
 
     ####### start here######  
         @weeks = Week.select do |week| 
