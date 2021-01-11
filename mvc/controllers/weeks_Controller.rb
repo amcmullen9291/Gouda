@@ -1,3 +1,7 @@
+require_relative '../../config/environment'
+require_relative '../models/hour.rb'
+
+
 class WeeksController < EmployeesController
 
     post "/bcs/profile/:badge_id/post_hours" do         
@@ -28,7 +32,9 @@ class WeeksController < EmployeesController
         @timecard.save  #current week's/ Hours values already stored in @sessions
 
     ####### start here######  
-        @weeks = Week.select |week| {week[:employee_id] == @session[:id]}
+        @weeks = Week.select do |week| 
+            week[:employee_id] == @session[:id]
+        end
         @first_week = @weeks.first
         flash[:notice] = "Time Card Submitted. Thank You." 
         erb :"profile/weeks/index", :layout => false

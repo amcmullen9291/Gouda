@@ -17,4 +17,11 @@ class Employee < ActiveRecord::Base
         delta = date > Date.today ? 0 : 7
         date + delta
     end
+
+    def each_after(n) 
+        each_with_index do |elem, i|
+          yield elem if i >= n
+      end
+    end
+
 end
