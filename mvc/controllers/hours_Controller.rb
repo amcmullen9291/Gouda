@@ -4,7 +4,6 @@ require_relative '../models/hour.rb'
 class HoursController < EmployeesController
 
     post '/bcs/new_employees/hours' do #creates hour instance after signup
-        puts params
         @session = session
         @day= "Sunday"
         @date = Hour.new 
@@ -47,7 +46,7 @@ class HoursController < EmployeesController
         @date = Hour.new 
         @week =  @date.date_of_next(@day)    
         @d = Time.now
-
+puts @newhours[:counter]
         erb :"profile/show"
     end
 
@@ -63,12 +62,9 @@ class HoursController < EmployeesController
         daily = Date.new
         @shift =  daily.cwday 
         erb :"/profile/hours_edit"
-        @flash[:notice] = "Today's hours already submitted"
-        @completed = @flash[:notice]
     end
 
     patch '/new_hours/:hours_id' do 
-        puts params
         @session = session
         # Hour.connection #unneeded now that config is aware...
         @newhours = Hour.find_by_id(params[:id])
@@ -78,6 +74,8 @@ class HoursController < EmployeesController
             counter +=1
             if counter == 3
                 @newhours[:counter] == 1
+            else
+                @newhours[:counter] = counter
             end
         @newhours.save
         @session[:badge_id]= @newhours[:badge_id]
