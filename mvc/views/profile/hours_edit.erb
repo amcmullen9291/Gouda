@@ -9,7 +9,7 @@
         <title>New Hours</title>
     <head>
     <body>
-    <form action="/new_hours/:hours_id %>" method="post">
+    <form action="/new_hours/:hours_id" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <table id="hours_table">
     <thead>
@@ -46,38 +46,38 @@
     </tr>
     <tr>
     <td></td>
-    <% if @counter = 1 && @shift == 1 %>
-        <td><input type="time" name="hours[monday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 1 %>
+        <td><input type="time" name="hours[monday_in]" value= "<%=@d.strftime("%T")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:monday_in]%> </td>
     <%end%>
-    <% if @counter = 1 && @shift == 2 %>
-        <td><input type="time" name="hours[tuesday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 2 %>
+        <td><input type="time" name="hours[tuesday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:tuesday_in]%> </td>
     <%end%>
-   <% if @counter = 1 && @shift == 3 %>     
-        <td><input type="time" name="hours[wednesday_in]" value= <%=@d.strftime("%R")%>></td>  
+   <% if @newhours[:counter] == 1 && @shift == 3 %>     
+        <td><input type="time" name="hours[wednesday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>  
     <%else%>
         <td><%= @session[:wednesday_in]%> </td>
     <%end%>
-    <% if @counter = 1 && @shift == 4 %>           
-        <td><input type="time" name="hours[thursday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 4 %>           
+        <td><input type="time" name="hours[thursday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:thursday_in]%> </td>
     <%end%>
-    <% if @counter = 1 && @shift == 5 %>    
-        <td><input type="time" name="hours[friday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 5 %>    
+        <td><input type="time" name="hours[friday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:friday_in]%> </td>
     <%end%>
-    <% if @counter = 1 && @shift == 6 %>
-        <td><input type="time" name="hours[saturday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 6 %>
+        <td><input type="time" name="hours[saturday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:saturday_in]%> </td>
     <%end%>
-    <% if @counter = 1 && @shift == 7 %>    
-        <td><input type="time" name="hours[sunday_in]" value= <%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 1 && @shift == 7 %>    
+        <td><input type="time" name="hours[sunday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:sunday_in]%> </td>
     <%end%>
@@ -97,38 +97,38 @@
         </tr>  
     <tr>
     <td></td>
-    <% if @counter = 2 && @shift == 1 %>
-        <td><input type="time" name="hours[monday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift = 1 %>
+        <td><input type="time" name="hours[monday_out]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:monday_out]%> </td>
     <%end%>
-    <% if @counter = 2 && @shift == 2 %>
-        <td><input type="time" name="hours[tuesday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 2 %>
+        <td><input type="time" name="hours[tuesday_out]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:tuesday_out]%> </td>
     <%end%>
-    <% if @counter = 2 && @shift == 3 %>
-    <td><input type="time" name="hours[wednesday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 3 %>
+    <td><input type="time" name="hours[wednesday_out]" "value=<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:wednesday_out]%> </td>
     <%end%>    
-    <% if @counter = 2 && @shift == 4 %>
-    <td><input type="time" name="hours[thursday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 4 %>
+    <td><input type="time" name="hours[thursday_out]" value="<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:thursday_out]%> </td>
     <%end%>    
-    <% if @counter = 2 && @shift == 5 %>
-    <td><input type="time" name="hours[friday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 5 %>
+    <td><input type="time" name="hours[friday_out]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:friday_out]%> </td>
     <%end%>    
-    <% if @counter = 2 && @shift == 6 %> 
-    <td><input type="time" name="hours[saturday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 6 %> 
+        <td><input type="time" name="hours[saturday_out]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:saturday_out]%> </td>
     <%end%>    
-    <% if @counter = 2 && @shift == 7 %>
-    <td><input type="time" name="hours[sunday_out]" value=<%=@d.strftime("%R")%>></td>    
+    <% if @newhours[:counter] == 2 && @shift == 7 %>
+        <td><input type="time" name="hours[sunday_out]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:sunday_out]%> </td>
     <%end%>    
