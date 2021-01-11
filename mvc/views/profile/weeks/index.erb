@@ -11,7 +11,7 @@
     <body>
     <table> 
     <title><%=@session[:badge_id] %></title>
-        <h3> <%=@session[last_name]%>, <%=@session[:first_name]%></h3>
+        <h3> <%=@session[:last_name]%>, <%=@session[:first_name]%></h3>
     <thead>
         <tr>
             <th colspan="8"><b>Submitted Hours: </b></th>
@@ -51,12 +51,6 @@
       <td><%= @session[:saturday_in]%></td>
       <td><%= @session[:sunday_in]%></td>
       </tr>
-        <tr>
-            <td colspan="8">></td>
-        </tr> 
-        <tr>
-            <td colspan="8">></td>
-        </tr>  
       <tr>
       <td>Clock Out</td>
       <td><%= @session[:monday_out]%></td>
@@ -70,26 +64,27 @@
       <tr>
       </tr>
       <tr>
-        <td colspan="8">Hours Logged With :</td>
+        <td colspan="8"><center>Hours Logged With :</center></td>
       </tr>
       <tr>
-      <td colspan="8"><%= @session[:dept_id] %> Department</td>
+      <td colspan="8"><center><%= @session[:dept_id] %> department</center></td>
       </tr>
     </tbody>
     </table>
-        <section> #add CSS but only for this "section tag"; like a different color, 
+        <section>
             <% if @weeks.count > 4%>
                 <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week[:week_ending]%>."</p>
             <% else%>
-                <p> "Well Done!"</p>
+                <p> Well Done!</p>
             <% end%>
                 </br> 
             <p><i> "Be the change that you wish to see in the world. Ghandi"</i></p>
         </section>
-        <form action= "/bcs/profile/:id/reset" method = "post"> #may need CSS
+        <form action= "/bcs/profile/:id/reset" method = "post">
+        
             <input type="hidden" name="_method" value="DELETE">
             <input type= "hidden" name= "id" value= <%=@session[:hours_id]%>> 
-            <a href="/bcs/profile/:id/reset">Back to Profile</a>
+            <button>Back to Profile</button>
         </form>
         </body>
 </html>
