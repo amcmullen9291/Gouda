@@ -64,7 +64,7 @@ class HoursController < EmployeesController
         @shift =  daily.cwday 
         erb :"/profile/hours_edit"
         @flash[:notice] = "Today's hours already submitted"
-        @flash[:notice]
+        @completed = @flash[:notice]
     end
 
     patch '/new_hours/:hours_id' do 
@@ -77,10 +77,8 @@ class HoursController < EmployeesController
             counter = counter.to_i
             counter +=1
             if counter == 3
-                counter == 1
+                @newhours[:counter] == 1
             end
-            counter = counter.to_s
-        @newhours[:counter] = counter
         @newhours.save
         @session[:badge_id]= @newhours[:badge_id]
     
