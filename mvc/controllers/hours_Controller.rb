@@ -1,5 +1,6 @@
 require_relative '../../config/environment'
 require_relative '../models/hour.rb'
+
 class HoursController < EmployeesController
 
     post '/bcs/new_employees/hours' do #creates hour instance after signup
@@ -58,14 +59,24 @@ class HoursController < EmployeesController
         @week =  @date.date_of_next(@day)
         @d = Time.now
 
+        daily = Date.new
+        @counter = @session[:counter]
+        @shift =  daily.cwday 
+
         erb :"/profile/hours_edit"
     end
 
     post '/new_hours/:hours_id' do 
         @session = session
         # Hour.connection #unneeded now that config is aware...
-        @newhours = Hour.find_by(:id => @session[:id])
+        @newhours = Hour.find_by(:id => params[:id])
         @newhours.update(params[:hours])
+        @counter = @counter.to_i
+        @counter +=1
+        @counter = @counter.to_s
+        if @counter == "3"
+            @newhours[:counter] = "1"
+        end 
         @newhours.save
     
         flash[:notice] =  "Time Card has been Updated." 
