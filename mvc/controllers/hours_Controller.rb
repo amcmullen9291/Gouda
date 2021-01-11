@@ -62,20 +62,30 @@ class HoursController < EmployeesController
         @counter = @newhours[:counter]
         daily = Date.new
         @shift =  daily.cwday 
-        puts @d.strftime("%R")
         erb :"/profile/hours_edit"
+        @flash[:notice] = "Today's hours already submitted"
+        @flash[:notice]
     end
 
-    post '/new_hours/:hours_id' do 
+    patch '/new_hours/:hours_id' do 
         puts params
         @session = session
         # Hour.connection #unneeded now that config is aware...
         @newhours = Hour.find_by_id(params[:id])
         @newhours.update(params[:hours])
+        counter = @newhours[:counter]
+            counter = counter.to_i
+            counter +=1
+            if counter == 3
+                counter == 1
+            end
+            counter = counter.to_s
+        @newhours[:counter] = counter
         @newhours.save
+        @session[:badge_id]= @newhours[:badge_id]
     
         flash[:notice] =  "Time Card has been Updated." 
-        redirect "/bcs/profile/:badge_id/hours" 
+        redirect '/bcs/profile/:badge_id/hours' 
     end
 
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
