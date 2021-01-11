@@ -52,7 +52,24 @@ class HoursController < EmployeesController
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @sessions= session
-        @newhours = Hour.find_by(:id => @session[:hours_id])
+        @newhours = Hour.find_by_badge_id(badge_id = @session[:badge_id])
+        @session[:monday_in] = @newhours[:monday_in]
+        @session[:monday_out] = @newhours[:monday_out]
+        @session[:tuesday_in] = @newhours[:tuesday_in]
+        @session[:tuesday_out] = @newhours[:tuesday_out]
+        @session[:wednesday_in] = @newhours[:wednesday_in]
+        @session[:wednesday_out] = @newhours[:wednesday_out]
+        @session[:thursday_in] = @newhours[:thursday_in]
+        @session[:thursday_out] = @newhours[:thursday_out]
+        @session[:friday_in] = @newhours[:friday_in]
+        @session[:friday_out] =  @newhours[:friday_out]
+        @session[:saturday_in] = @newhours[:saturday_in]
+        @session[:saturday_out] = @newhours[:saturday_out]
+        @session[:sunday_in] = @newhours[:sunday_in]
+        @session[:sunday_in] = @newhours[:sunday_in]
+        @session[:hours_id] = @newhours[:id]
+        @session[:counter] = @newhours[:counter]
+
         @date = Hour.new #for date
         @day= "Sunday"
         @week =  @date.date_of_next(@day)
