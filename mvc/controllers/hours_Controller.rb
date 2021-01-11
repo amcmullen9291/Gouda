@@ -53,30 +53,26 @@ class HoursController < EmployeesController
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @session = session
-
+        @newhours = Hour.find_by(:id => @session[:hours_id])
         @date = Hour.new #for date
         @day= "Sunday"
         @week =  @date.date_of_next(@day)
         @d = Time.now
 
+        @counter = @newhours[:counter]
         daily = Date.new
-        @counter = @session[:counter]
         @shift =  daily.cwday 
-
+        puts @shift
+        puts @counter
         erb :"/profile/hours_edit"
     end
 
-    post '/new_hours/:hours_id' do 
+    post '/new_hours/:id' do 
+        puts params
         @session = session
         # Hour.connection #unneeded now that config is aware...
-        @newhours = Hour.find_by(:id => params[:id])
+        @newhours = Hour.find_by_id(params[:id])
         @newhours.update(params[:hours])
-        @counter = @counter.to_i
-        @counter +=1
-        @counter = @counter.to_s
-        if @counter == "3"
-            @newhours[:counter] = "1"
-        end 
         @newhours.save
     
         flash[:notice] =  "Time Card has been Updated." 
