@@ -59,13 +59,13 @@
         </tr>  
       <tr>
       <td>Clock Out</td>
-      <td><input type="time" name= "weekday[monday_out]" readonly="readonly" value= <%= @session[:monday_out]%></td>
-      <td><input type="time" name= "weekday[tuesday_out]" readonly="readonly" value= <%= @session[:tuesday_out]%></td>
-      <td><input type="time" name= "weekday[wednesday_out]" readonly="readonly" value= <%= @session[:wednesday_out]%></td>
-      <td><input type="time" name= "weekday[thursday_out]" readonly="readonly" value= <%= @session[:thursday_out]%></td>
-      <td><input type="time" name= "weekday[friday_out]" readonly="readonly" value= <%= @session[:friday_out]%></td>
-      <td><input type="time" name= "weekday[saturday_out]" readonly="readonly" value= <%= @session[:saturday_out]%></td>
-      <td><input type="time" name= "weekday[sunday_out]" readonly="readonly" value= <%= @session[:sunday_out]%></td>
+      <td><%= @session[:monday_out]%></td>
+      <td><%= @session[:tuesday_out]%></td>
+      <td><%= @session[:wednesday_out]%></td>
+      <td><%= @session[:thursday_out]%></td>
+      <td><%= @session[:friday_out]%></td>
+      <td><%= @session[:saturday_out]%></td>
+      <td><%= @session[:sunday_out]%></td>
       </tr>
       <tr>
       </tr>
@@ -78,10 +78,10 @@
     </tbody>
     </table>
         <section> #add CSS but only for this "section tag"; like a different color, 
-            <% if @weeks.count > 1%>
-                <p> "<b><%= @weeks.count %></b> Weeks Strong. Leading the Way Since <%= @first_week[:week_ending]%>."</p>
+            <% if @weeks.count > 4%>
+                <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week[:week_ending]%>."</p>
             <% else%>
-                <p> "think of something for here..."</p>
+                <p> "Well Done!"</p>
             <% end%>
                 </br> 
             <p><i> "Be the change that you wish to see in the world. Ghandi"</i></p>
