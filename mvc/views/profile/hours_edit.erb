@@ -46,12 +46,12 @@
     </tr>
     <tr>
     <td></td>
-    <% if @newhours[:counter] == "1" && @shift == 1 %>
+    <% if @newhours[:counter] == "1" && @shift == "1" %>
         <td><input type="time" name="hours[monday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:monday_in]%> </td>
     <%end%>
-    <% if @newhours[:counter] == "1" && @shift == 2 %>
+    <% if @newhours[:counter] == "1" && @shift == "2" %>
         <td><input type="time" name="hours[tuesday_in]" value= "<%=@d.strftime("%R")%>" readonly="readonly"></td>    
     <%else%>
         <td><%= @session[:tuesday_in]%> </td>

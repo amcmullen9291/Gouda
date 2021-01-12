@@ -23,6 +23,7 @@ class HoursController < EmployeesController
     end
 
     get '/bcs/profile/:badge_id/hours' do
+        puts params
         @session = session 
         @newhours = Hour.find_by_badge_id(badge_id = @session[:badge_id])
         @session[:monday_in] = @newhours[:monday_in]
@@ -52,6 +53,7 @@ puts @newhours[:counter]
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @session = session
+        puts @session[:conunter]
         @newhours = Hour.find_by(:id => @session[:hours_id])
         @date = Hour.new #for date
         @day= "Sunday"
@@ -73,7 +75,7 @@ puts @newhours[:counter]
             counter = counter.to_i
             counter +=1
             if counter == 3
-                @newhours[:counter] == 1
+                @newhours[:counter] == "1"
             else
                 @newhours[:counter] = counter
             end
