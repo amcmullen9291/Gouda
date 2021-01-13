@@ -13,35 +13,45 @@ class HumanResourcesController < EmployeesController
 
     if @session[:office] == "YES"     
       if params[:criteria] == "last_name"
-        @employee = Employee.find_by(:last_name => params[:query])         
-        @session[:badge_id] = @employee[:badge_id]
-        @session[:last_name] = @employee[:last_name]
-        @session[:id] = @employee[:id]
-        @session[:shift_id] = @employee[:shift_id]
-        @session[:first_name] = @employee[:first_name]
-        @session[:dept_id] = @employee[:dept_id]
-        @session[:email] = @employee[:email]
-        @session[:telephone] = @employee[:telephone]
-        @session[:password] = @employee[:password]
-        @session[:location] = @employee[:location]
-        @session[:dept_id] = @employee[:dept_id]
+        @employee = Employee.find_by(:last_name => params[:query]) 
+        if @employee        
+          @session[:badge_id] = @employee[:badge_id]
+          @session[:last_name] = @employee[:last_name]
+          @session[:id] = @employee[:id]
+          @session[:shift_id] = @employee[:shift_id]
+          @session[:first_name] = @employee[:first_name]
+          @session[:dept_id] = @employee[:dept_id]
+          @session[:email] = @employee[:email]
+          @session[:telephone] = @employee[:telephone]
+          @session[:password] = @employee[:password]
+          @session[:location] = @employee[:location]
+          @session[:dept_id] = @employee[:dept_id]
 
-        erb :"/hr_profile/search_results/show"
+          erb :"/hr_profile/search_results/show"
+        else 
+          flash[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine"
+          redirect '/bcs/hr_portal'
+        end
       elsif params[:criteria] == "badge_id"
-        @employee = Employee.find_by(:badge_id => params[:query])         
-        @session[:badge_id] = @employee[:badge_id]
-        @session[:last_name] = @employee[:last_name]
-        @session[:id] = @employee[:id]
-        @session[:shift_id] = @employee[:shift_id]
-        @session[:first_name] = @employee[:first_name]
-        @session[:dept_id] = @employee[:dept_id]
-        @session[:email] = @employee[:email]
-        @session[:telephone] = @employee[:telephone]
-        @session[:password] = @employee[:password]
-        @session[:location] = @employee[:location]
-        @session[:dept_id] = @employee[:dept_id]
+        @employee = Employee.find_by(:badge_id => params[:query])
+        if @employee         
+          @session[:badge_id] = @employee[:badge_id]
+          @session[:last_name] = @employee[:last_name]
+          @session[:id] = @employee[:id]
+          @session[:shift_id] = @employee[:shift_id]
+          @session[:first_name] = @employee[:first_name]
+          @session[:dept_id] = @employee[:dept_id]
+          @session[:email] = @employee[:email]
+          @session[:telephone] = @employee[:telephone]
+          @session[:password] = @employee[:password]
+          @session[:location] = @employee[:location]
+          @session[:dept_id] = @employee[:dept_id]
 
-        erb :"/hr_profile/search_results/show"
+          erb :"/hr_profile/search_results/show"
+        else
+          flash[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine."
+          redirect '/bcs/hr_portal'
+        end
       end
     else
       flash[:notice] = "You are not authorized to view this information"
