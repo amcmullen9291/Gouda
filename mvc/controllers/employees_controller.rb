@@ -125,8 +125,7 @@ class EmployeesController < Sinatra::Base
   end
 
   delete '/bcs/profile/:id' do 
-    @employee = Employee.find_by(:id => params[:id])  
-    @employee.destroy
+    Employee.delete(@session[:id])
     flash[:notice] = "profile deleted"
     redirect "/"
   end
