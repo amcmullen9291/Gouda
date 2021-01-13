@@ -10,7 +10,6 @@ class HumanResourcesController < EmployeesController
     
   post '/bcs/hr_portal/search/search' do 
     @session = session
-
     if @session[:office] == "YES" 
       if params[:criteria] == "last_name"    
       @employee = Employee.find_by(:last_name => params[:query])     
