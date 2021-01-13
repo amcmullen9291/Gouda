@@ -58,6 +58,13 @@ class HumanResourcesController < EmployeesController
     end
   end
 
+  get '/bcs/hr/profile/:badge_id' do
+    @session = session
+    @employee = Employee.find_by(:badge_id => @session[:badge_id])
+        
+    erb :"/hr_profile/search_results/edit"
+  end
+
   post "/bcs/hr/profile/:badge_id/modify" do
     @session = session  
     @employee = Employee.find_by(:id => @session[:id])
@@ -84,12 +91,6 @@ class HumanResourcesController < EmployeesController
     redirect '/bcs/hr/profile/:badge_id'
   end 
 
-  get '/bcs/hr/profile/:badge_id' do
-    @session = session
-    @employee = Employee.find_by(:badge_id => @session[:badge_id])
-        
-    erb :"/hr_profile/search_results/edit"
-  end
 # ------------------------delete from Employee Controller----------------->
       # delete '/bcs/hr/profile/:id' do
       #   @employee = Employee.find_by(:id => params[:id])  
