@@ -136,7 +136,7 @@ class EmployeesController < Sinatra::Base
   delete '/bcs/hr/profile/:id' do  #delete route from HR
     @session = session
     Employee.delete(@session[:id])
-  flash[:notice] = "All records for: <%=@session[first_name]%> <%=@session[last_name]%> have been deleted."
+  flash[:notice] = "Records have been deleted."
     
     erb :"/hr_profile/show"
   end
