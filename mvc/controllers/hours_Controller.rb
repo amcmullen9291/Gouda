@@ -68,12 +68,8 @@ puts @newhours[:counter]
         @d = Time.new
 
         @counter = @newhours[:counter]
-        # daily = Date.new ##there's a better way to do this
-        # @shift =  daily.cwday 
         puts "----------check --------------->"
-        puts @d.tuesday?
         puts @counter
-        puts @shift
         erb :"/profile/hours_edit"
     end
 
