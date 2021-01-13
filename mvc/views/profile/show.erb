@@ -98,7 +98,7 @@
            <td></td>
         </tr>
         <tr>
-        <td colspan="8"><c>Clocked In</c></td>
+        <td colspan="8"><c>Clocked In:</c></td>
         </tr>
           <tr>
           <td></td>
@@ -121,7 +121,7 @@
           <td><%= @session[:sunday_in]%></td>
           </tr>
               <tr>
-                <td colspan="8"><c>Clocked Out</c></td>
+                <td colspan="8"><c>Clocked Out:</c></td>
             </tr> 
             <tr>
             <td></td>
@@ -154,15 +154,17 @@
           </tr>
         </tbody>
     </table>
-            <p><a href="/bcs/profile/:badge_id/hours/edit">Record Time</a>
+            <p><a href="/bcs/profile/:badge_id/hours/edit" class="Timecard_Submit">Record Time</a>
             Please record <u>ALL</u> hours before submitting timecard.</p> 
            <a href='#'>Return to Profile</a>
+           </br>
             </form>
             <form action="/bcs/post_week/:badge_id" method="post">
             <input type="text" hidden name="week[employee_id]" value=<%=@session[:id]%>>
             <input type="text" hidden name="week[badge_id]" value=<%=@session[:badge_id]%>>
             <input type="text" hidden name="week[dept_id]" value=<%= @date.date_of_next(@day)%>>
-            <button>Submit Completed Timecard</button>
+            <button class="Timecard_Submit">Submit Completed Timecard</button>
+            </br>
             </form>        
             </div>
         </div>
