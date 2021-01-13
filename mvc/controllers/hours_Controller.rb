@@ -92,6 +92,7 @@ puts @newhours[:counter]
     end
 
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
+       @session = session
         Hour.delete(params[:id])
         erb :passage
     end

@@ -1,0 +1,40 @@
+<html>
+    <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+    <link rel="stylesheet" href="/stylesheets/search_tables.css"> 
+    <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+    <title>H.R. Portal </title>
+    </head>
+    <body class= "patterns pt37">
+    <section> 
+        <h2 class= "search-heading"> Beer Cheese Soup Employee Search</h2>
+        <aside><img src="/logo.jpg" alt="" id="bcs-pic">
+        </aside>
+    </section>
+<section class= "search_info">
+<p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
+<main>
+<br/>
+<div id = "search1">
+<form action= "/bcs/hr_portal/search/search" method= "post"> 
+    <p><label>Badge ID </label>
+    <input type="text"  name="query">
+    <input type= "hidden" name= "criteria" value="badge_id"> 
+    <button>Search</button>
+    </form>
+    <form action= "/bcs/hr_portal/search/search" method= "post"> 
+    <p><label>Last Name </label>
+    <input type="text"  name="query">
+    <input type= "hidden" name= "criteria" value="last_name"> 
+    <button>Search</button>
+    </form>
+</div>
+</main>
+<section>
+        <p><nobr><b>©2020 BeerCheeseSoup Inc. | Web design by Anthony McMullen | Flatiron School</nobr><b></p>
+    </body>
+</html>

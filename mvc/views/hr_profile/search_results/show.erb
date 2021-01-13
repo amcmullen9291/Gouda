@@ -1,0 +1,51 @@
+<html>
+    <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/stylesheets/hr_portal.css"> 
+    <link rel="stylesheet" href="/stylesheets/search_tables.css"> 
+    <link rel="stylesheet" href="/stylesheets/background-graphics.css">
+    <title>H.R. Portal </title>
+    </head>
+    <body class= "patterns pt37">
+    <section> 
+        <h2 class= "search-heading"> Beer Cheese Soup Employee Search</h2>
+        <aside><img src="/logo.jpg" alt="" id="bcs-pic">
+        </aside>
+    </section>
+    # <section class= "search_info">
+    <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
+<main>
+<table>
+<thead>
+<tr>
+    <th ></th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Badge ID</th>
+    <th>Location</th>
+    <th>Department</th>
+    <th>Shift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><%= @session[:first_name] %></td>
+<td><%= @session[:last_name] %></td>
+<td><a href="/bcs/hr/profile/:badge_id"><%= @session[:badge_id] %></a></td>
+<td><%= @session[:location] %></td>  
+<td><%= @session[:dept_id] %></td>
+<td><%= @session[:shift_id] %></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<a href= "/bcs/hr_portal">Return to Search</a>
+</main>
+</section>
+        <p><nobr><b>©2020 BeerCheeseSoup Inc. | Web design by Anthony McMullen | Flatiron School</nobr><b></p>
+    </body>
+</html>
