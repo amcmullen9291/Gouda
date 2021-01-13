@@ -65,7 +65,7 @@ class HumanResourcesController < EmployeesController
     erb :"/hr_profile/search_results/edit"
   end
 
-  post "/bcs/hr/profile/:badge_id/modify" do
+  patch "/bcs/hr/profile/:badge_id/modify" do
     @session = session  
     @employee = Employee.find_by(:id => @session[:id])
     @employee.update(params[:employee])

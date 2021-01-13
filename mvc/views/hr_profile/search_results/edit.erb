@@ -45,27 +45,27 @@
                                 <td><input type= "text" name= "employee[badge_id]" required: true required="required" placeholder= <%= @session[:badge_id] %>></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>Password Reset</td>
+                                <td><input type= "password" name= "employee[password]" required: true required="required" placeholder= "Enter new Password"><input type= "text" name= "employee[badge_id]" required: true required="required" value= <%= @session[:badge_id] %>></td>
                                 <td></td>
                              </tr>
                              <tr>
                                 <td>Email:</td>
-                                <td><input type= "text" name= "employee[email]" required: true required="required" placeholder= <%= @session[:email] %>></td>
+                                <td><input type= "text" name= "employee[email]" required: true required="required" value= <%= @session[:email] %>></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>Phone:</td>
-                                <td><input type= "text" name= "employee[telephone]" required: true required="required" placeholder= <%= @session[:telephone] %>></td>
+                                <td><input type= "text" name= "employee[telephone]" required: true required="required" value= <%= @session[:telephone] %> readonly="readonly"></td>
                              </tr>
                              <tr>
                                 <td>Department:</td>
-                                <td><input type= "text" name= "employee[dept_id]" required: true required="required" placeholder= <%= @session[:dept_id] %>></td>
+                                <td><input type= "text" name= "employee[dept_id]" required: true required="required" value= <%= @session[:dept_id] %> readonly="readonly"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>Shift:</td>
-                                <td><input type= "text" name= "employee[shift_id]" required: true required="required" placeholder= <%= @session[:shift_id] %>></td>
+                                <td><input type= "text" name= "employee[shift_id]" required: true required="required" value= <%= @session[:shift_id] %> readonly="readonly"></td>
                             </tr>
                             </table>
                             <input type= "hidden" name= "id" required: true required="required" value= <%= @session[:id] %>>
