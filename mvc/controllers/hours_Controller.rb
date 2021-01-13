@@ -79,11 +79,10 @@ puts @newhours[:counter]
             counter = counter.to_i
             counter +=1
             if counter == 3
-                @newhours[:counter] == "1"
-            else
-                @newhours[:counter] = counter
+                @newhours[:counter] = "1"
             end
         @newhours.save
+        puts counter
         puts @newhours[:counter] #rmove this
         @session[:badge_id]= @newhours[:badge_id]
     
