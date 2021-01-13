@@ -61,8 +61,12 @@ puts @newhours[:counter]
         @d = Time.new
 
         @counter = @newhours[:counter]
-        daily = Date.new
-        @shift =  daily.cwday 
+        # daily = Date.new ##there's a better way to do this
+        # @shift =  daily.cwday 
+        puts "----------check --------------->"
+        puts @d.tuesday?
+        puts @counter
+        puts @shift
         erb :"/profile/hours_edit"
     end
 
@@ -80,6 +84,7 @@ puts @newhours[:counter]
                 @newhours[:counter] = counter
             end
         @newhours.save
+        puts @newhours[:counter] #rmove this
         @session[:badge_id]= @newhours[:badge_id]
     
         flash[:notice] =  "Time Card has been Updated." 
@@ -87,9 +92,9 @@ puts @newhours[:counter]
     end
 
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
-        @hours = Hour.find_by(:id => params[:id]) #or params[:id]
-        @hours.destroy
-        
+        @hours = Hour.find_by(:id => params[:id])
+        @hours.delete
+        puts @hours.exist?(:id => @session[:badge_id])
         erb :passage
     end
 end 

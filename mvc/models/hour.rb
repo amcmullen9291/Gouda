@@ -16,9 +16,4 @@ class Hour < ActiveRecord::Base
         date + delta
     end
 
-    def revert  #not using it yet
-        # @newhours[:counter] = "1"
-        hour.counter = hour.class.columns_hash['counter'].default
-    end
-    
 end
