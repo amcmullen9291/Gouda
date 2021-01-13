@@ -15,9 +15,16 @@ class HoursController < EmployeesController
     end
 
     post '/bcs/hours' do #do the same as above post with form (from :passage)
+        @session = session
+
+        @day= "Sunday"
+        @date = Hour.new 
+        @week =  @date.date_of_next(@day)
+
         @hour = Hour.new
         @hour[:employee_id] = params[:id]
         @hour[:badge_id] = @session[:badge_id]
+        @hour[:week_ending] = @week
         @hour.save
         redirect "/bcs/profile/:badge_id/hours"
     end
@@ -80,6 +87,8 @@ puts @newhours[:counter]
             counter +=1
             if counter == 3
                 @newhours[:counter] = "1"
+            else
+                @newhours[:counter] = counter
             end
         @newhours.save
         puts counter
@@ -92,7 +101,7 @@ puts @newhours[:counter]
 
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
        @session = session
-        Hour.delete(params[:id])
+        Hour.delete(@session[:hours_id])
         erb :passage
     end
 end 
