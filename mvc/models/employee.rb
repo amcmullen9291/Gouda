@@ -1,4 +1,5 @@
 require 'active_record'
+
 require 'date'
 require_relative '../../config/environment'
 require_relative 'hour.rb'

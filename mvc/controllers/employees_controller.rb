@@ -1,3 +1,4 @@
+require 'sinatra/base'
 require 'sinatra/flash'
 require 'rack-flash'
 
@@ -35,7 +36,7 @@ class EmployeesController < Sinatra::Base
     @session[:office] = "YES"
     erb :"hr_profile/show"
     else
-      flash[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine. -Rick Blaine"
+      puts "Of all the gin joints in all the towns in all the world, she walks into mine. -Rick Blaine"
       redirect '/bcs/login'
     end
   end
@@ -74,7 +75,7 @@ class EmployeesController < Sinatra::Base
       @session[:password] = @employee[:password]
       redirect '/bcs/profile/:badge_id/hours'  #redirect to Hours controller
     else
-      flash[:notice] = "Password or Badge ID not recognized. Please try again"
+      puts "Password or Badge ID not recognized. Please try again"
       redirect '/bcs/login'
     end
   end
