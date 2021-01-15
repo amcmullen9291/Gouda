@@ -22,7 +22,7 @@ class HumanResourcesController < EmployeesController
         if @employees.count >= 1 
           erb :"/hr_profile/search_results/show"
         else 
-          flash[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine"
+          flash[:notice] = "no record found"
           erb :"hr_profile/show"
         end
       elsif params[:criteria] == "badge_id"
@@ -35,14 +35,14 @@ class HumanResourcesController < EmployeesController
         end
       end
     else
-      flash[:notice] = "no record found"
+      flash[:notice] = "You are not authorized to view this information"
       erb :"home"
     end
   end
 
   post '/bcs/hr/profile/:badge_id' do
     @session = session
-    @employee = Employee.find_by(:badge_id => params[:badge_id])
+    @employee = Employee.find(params[:id])
       @session[:badge_id] = @employee[:badge_id]
       @session[:last_name] = @employee[:last_name]
       @session[:id] = @employee[:id]
