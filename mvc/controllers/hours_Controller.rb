@@ -54,7 +54,8 @@ class HoursController < EmployeesController
         @date = Hour.new 
         @week =  @date.date_of_next(@day)    
         @d = Time.now
-puts @newhours[:counter]
+        puts @newhours[:counter]
+        
         erb :"profile/show"
     end
 
