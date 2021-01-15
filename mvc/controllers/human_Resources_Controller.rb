@@ -23,7 +23,6 @@ class HumanResourcesController < EmployeesController
           erb :"/hr_profile/search_results/show"
         else 
           flash[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine"
-          @msg = flash[:notice]
           erb :"hr_profile/show"
         end
       elsif params[:criteria] == "badge_id"
@@ -31,13 +30,12 @@ class HumanResourcesController < EmployeesController
         if @employees.count >= 1
           erb :"/hr_profile/search_results/show"
         else
-          flash[:notice] = "no record found."
-          @msg = flash[:notice]
+          flash[:notice] = "no record found"
           erb :"hr_profile/show"
         end
       end
     else
-      flash[:notice] = "You are not authorized to view this information"
+      flash[:notice] = "no record found"
       erb :"home"
     end
   end
