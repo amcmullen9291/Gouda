@@ -10,42 +10,51 @@
     <title>H.R. Portal </title>
     </head>
     <body class= "patterns pt37">
-    <section> 
-        <h2 class= "search-heading"> Beer Cheese Soup Employee Search</h2>
-        <aside><img src="/logo.jpg" alt="" id="bcs-pic">
-        </aside>
-    </section>
+        <section> 
+            <h2 class= "search-heading"> Beer Cheese Soup Employee Search</h2>
+            <%if flash%>
+                <%=msg%>
+            <%end%>
+            <aside><img src="/logo.jpg" alt="" id="bcs-pic">
+            </aside>
+        </section>
     # <section class= "search_info">
-    <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
-<main>
-<table>
-<thead>
-<tr>
-    <th ></th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Badge ID</th>
-    <th>Location</th>
-    <th>Department</th>
-    <th>Shift</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><%= @session[:first_name] %></td>
-<td><%= @session[:last_name] %></td>
-<td><a href="/bcs/hr/profile/:badge_id"><%= @session[:badge_id] %></a></td>
-<td><%= @session[:location] %></td>  
-<td><%= @session[:dept_id] %></td>
-<td><%= @session[:shift_id] %></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<a href= "/bcs/hr_portal">Return to Search</a>
-</main>
-</section>
+        <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
+        <main>
+            <table>
+            <thead>
+                <tr>
+                    <th ></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Badge ID</th>
+                    <th>Location</th>
+                    <th>Department</th>
+                    <th>Shift</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @employees.each do |employee|%>
+                <tr>
+                <form action= "/bcs/hr/profile/:badge_id" method="post">
+                    <td></td>
+                    <td><%= employee[:first_name] %></td>
+                    <td><%= employee[:last_name] %></td>
+                    <td><%= employee[:badge_id]%></td>
+                    <td><%= employee[:location] %></td>  
+                    <td><%= employee[:dept_id] %></td>
+                    <td><%= employee[:shift_id] %></td>
+                    <td><input type="submit" value="select"></td>
+                    <input type="text" name="badge_id" hidden value= <%=employee[:badge_id]%>></td>
+                </form>
+                </tr>
+                <%end%>
+            </tbody>
+            </table>
+            <p></p>
+            <a href= "/bcs/hr_portal">Return to Search</a>
+        </main>
+        </section>
         <p><nobr><b>©2020 BeerCheeseSoup Inc. | Web design by Anthony McMullen | Flatiron School</nobr><b></p>
     </body>
 </html>
