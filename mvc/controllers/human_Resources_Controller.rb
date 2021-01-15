@@ -91,14 +91,4 @@ class HumanResourcesController < EmployeesController
       #   flash[:notice] = "record deleted"
       #     redirect "/hr_profile/show.erb"
       #   end (separation of concerns)
-
-  helpers do
-    
-    def each_after(n) 
-      each_with_index do |elem, i|
-        yield elem if i >= n
-      end
-    end
-
-  end
 end

@@ -19,10 +19,4 @@ class Employee < ActiveRecord::Base
         date + delta
     end
 
-    def each_after(n)  #unneeded method
-        each_with_index do |elem, i|
-          yield elem if i >= n
-      end
-    end
-
 end
