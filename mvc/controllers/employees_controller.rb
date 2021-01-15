@@ -76,6 +76,8 @@ class EmployeesController < Sinatra::Base
       redirect '/bcs/profile/:badge_id/hours'  #redirect to Hours controller
     else
       puts "Password or Badge ID not recognized. Please try again"
+      flash[:notice] ="Password or Badge ID not recognized. Please try again"
+      @warning = flash[:notice]
       redirect '/bcs/login'
     end
   end
@@ -125,8 +127,10 @@ class EmployeesController < Sinatra::Base
   end
 
   delete '/bcs/profile/:id' do 
+    @session = session
     Employee.delete(@session[:id])
-    flash[:notice] = "profile deleted"
+    flash[:notice] = "profile deleted: @session[:last_name] , @session[:first_name]"
+
     redirect "/"
   end
   #Model uses Employee has_many :hours, :dependent => :destroy, and 
@@ -135,9 +139,10 @@ class EmployeesController < Sinatra::Base
 #------------------------Delete----------------------->  
   delete '/bcs/hr/profile/:id' do  #delete route from HR
     @session = session
+    flash[:notice] = "All records for : @session[:first_name] @session[:last_name] have been removed."
+
     Employee.delete(@session[:id])
-  flash[:notice] = "Records have been deleted."
-    
+
     erb :"/hr_profile/show"
   end
 end
