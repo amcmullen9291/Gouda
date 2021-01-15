@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_162350) do
+ActiveRecord::Schema.define(version: 2021_01_15_212726) do
 
   create_table "employees", force: :cascade do |t|
     t.string "badge_id"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2021_01_09_162350) do
     t.string "sunday_out"
     t.string "counter", default: "1"
     t.integer "employee_id"
+    t.boolean "mfin", default: false
+    t.boolean "tuefin", default: false
+    t.boolean "wedfin", default: false
+    t.boolean "thrfin", default: false
+    t.boolean "frifin", default: false
+    t.boolean "satfin", default: false
+    t.boolean "sunfin", default: false
   end
 
   create_table "weeks", force: :cascade do |t|
