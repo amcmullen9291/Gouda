@@ -72,12 +72,11 @@
     </tbody>
     </table>
         <section>
-            <% if @weeks.count > 4%>
-        @first_week = @weeks.select(:week_ending).first
-        @first_week = @weeks.select(:week_ending).first
+            <% if @weeks.count > 1%>
                 <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week%>."</p>
             <% else%>
                 <p> Well Done!</p>
+                <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week%>."</p>
             <% end%>
                 </br> 
             <p><i> "Be the change that you wish to see in the world. Ghandi"</i></p>

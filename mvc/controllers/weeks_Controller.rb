@@ -30,8 +30,7 @@ class WeeksController < EmployeesController
         @session[:week_id] = @timecard[:id]
         @timecard.save  #current "week's Hour values already stored in @sessions
 
-    ####### start here######  
-        @weeks = Week.select(:employee_id == @session[:id])
+        @weeks = Week.select {|week, v| employee[:badge_id] == @session[:id]}
         @first_week = @weeks.select(:week_ending).first
         flash[:notice] = "Time Card Submitted. Thank You." 
         erb :"profile/weeks/index", :layout => false
