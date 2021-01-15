@@ -73,7 +73,9 @@
     </table>
         <section>
             <% if @weeks.count > 4%>
-                <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week[:week_ending]%>."</p>
+        @first_week = @weeks.select(:week_ending).first
+        @first_week = @weeks.select(:week_ending).first
+                <p> "<strong><%= @weeks.count %></strong> Weeks Strong! Leading the Way Since <%= @first_week%>."</p>
             <% else%>
                 <p> Well Done!</p>
             <% end%>
