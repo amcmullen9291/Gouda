@@ -8,6 +8,9 @@
     <title>Log-In</title>
     </head>
     <body>
+    <% flash.each do |msg| %>
+        <%= msg %>
+    <% end %>
         <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
