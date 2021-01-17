@@ -8,9 +8,10 @@ class HumanResourcesController < EmployeesController
   get '/bcs/hr_portal'  do 
     @session = session
     if @session[:office] == "YES"
-      erb :"hr_profile/show"
+      erb :"hr_profile/show", :layout => false
     else
       flash[:notice] = "You are not authorized to view this information"
+      erb :verification, :layout => false
     end
   end
     
@@ -23,7 +24,7 @@ class HumanResourcesController < EmployeesController
           erb :"/hr_profile/search_results/show"
         else 
           flash[:notice] = "no record found"
-          erb :"hr_profile/show"
+          erb :"hr_profile/show", :layout => false
         end
       elsif params[:criteria] == "badge_id"
         @employees = Employee.select {|employee, v| employee[:badge_id] == params[:query]}
@@ -31,12 +32,12 @@ class HumanResourcesController < EmployeesController
           erb :"/hr_profile/search_results/show"
         else
           flash[:notice] = "no record found"
-          erb :"hr_profile/show"
+          erb :"hr_profile/show", :layout => false
         end
       end
     else
       flash[:notice] = "You are not authorized to view this information"
-      erb :"home"
+      erb :"home", :layout => false
     end
   end
 

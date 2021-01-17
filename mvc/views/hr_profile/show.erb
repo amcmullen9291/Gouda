@@ -19,6 +19,9 @@
 <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
 <main>
 <br/>
+<% flash.each do |msg| %>
+    <%= msg %>
+  <% end %>
 <div id = "search1">
 <form action= "/bcs/hr_portal/search/search" method= "post"> 
     <p><label>Badge ID </label>
