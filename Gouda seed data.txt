@@ -1,0 +1,40 @@
+Badge_id:		Password:	    Name:			    Dept:
+25a7dec4f1		festival	    Copeland Dixon  	production	--done
+53ee82b34a		porkys		    Ellis Dixon		    maintenace	--done
+fa74d94997		maximumsport	Dennis Thouro Jr. 	Shipping	--done
+ece0e9c409		334-442-4524	Ginger Beckham		quality		--done
+ae1fce4925		rustic-fixins	Robin Henry Schyma	production	--done
+
+
+Seed Data Portfolio info for Sinatra Review:
+Mia Norwak		Douglas Corbett			Franklin Wesley Oak
+Hogansville		Hogansville			    Hogansville
+banjo@att.net	Dr.quinnMD@comcast.net	tigernation@yahoo.com
+706-302-9343	706-333-1258			706-415-5831
+		
+
+
+
+
+
+
+
+
+
+
+
+========================================================================
+
+955759f3c6		marinawatch	Mia Norwak
+ae88f09380		maximumsport	Dennis Thouro Jr.
+972575decb		JamesTaylor	Alex Silva
+4861e28525		outsiders	Douglas Andersen
+bb7191698b		rolltide	Jason Winthrope
+479737424d		334-442-4524	Ginger Beckham
+6264073192		fishbyme	Hunter Corbett
+89f4363f63		rustic-fixins	Cooper Reed
+5a6bc980b0		centipede	Frank Oak
+6272e6e90b		castcall	Clark Wesley
+ff6217c7a5		glorybound	Morgan Morris
+10a47e6f9a		btaurus		Robin Henry Schyma
+1300cc82d4		Witherspooning	Rhys Scotts
