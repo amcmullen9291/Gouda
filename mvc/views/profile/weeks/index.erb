@@ -73,10 +73,10 @@
     </table>
         <section>
             <% if @weeks.count > 1%>
-                <p> "<strong><%= @weeks.count+1 %></strong> Week Strong! Leading the Way Since."</p>
+                <p> "<strong><%= @weeks.count+1 %></strong> Weeks Strong! Leading the Way Since."</p>
             <% else%>
                 <p> Well Done!</p>
-                <p> "<strong><%= @weeks.count+1 %></strong> Weeks Strong! Leading the Way Since."</p>
+                <p> "<strong><%= @weeks.count+1 %></strong> Week Strong! Leading the Way Since <%=@session[:week_ending]%>."</p>
             <% end%>
                 </br> 
             <p><i> "Be the change that you wish to see in the world. Gandhi"</i></p>
