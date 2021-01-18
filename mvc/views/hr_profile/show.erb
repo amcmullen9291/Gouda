@@ -19,8 +19,8 @@
 <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
 <main>
 <br/>
-<% flash.each do |msg| %>
-    <%= msg %>
+<%= flash[:notice] do |msg|%>
+    <%= msg%>
   <% end %>
 <div id = "search1">
 <form action= "/bcs/hr_portal/search/search" method= "post"> 
@@ -37,6 +37,6 @@
 </form>
     </div>
     </main>
-    <button> <a href="/">Exit HR Portal</a><button>
-        </body>
+    <button id="profile_submit_btn"> <a href="/">Exit HR Portal</a></button>
+ </body>
 </html>

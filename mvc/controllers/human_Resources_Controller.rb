@@ -19,7 +19,7 @@ class HumanResourcesController < EmployeesController
     @session = session
     if @session[:office] == "YES" 
       if params[:criteria] == "last_name"    
-        @employees = Employee.select {|employee, v| employee[:last_name] == params[:query]}
+        @employees = Employee.select {|employee, v| employee[:last_name].downcase == params[:query].downcase}
         if @employees.count >= 1 
           erb :"/hr_profile/search_results/show"
         else 
@@ -82,7 +82,8 @@ class HumanResourcesController < EmployeesController
     @week =  @date.date_of_next(@day)
 
     flash[:notice] = "profile has been updated"
-    redirect '/bcs/hr/profile/:badge_id'
+    @confirm = flash[:notice]
+    redirect '/bcs/hr_portal'
   end 
 
 # ------------------------record deleted from Employee Controller----------------->
