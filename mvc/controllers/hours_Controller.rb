@@ -14,7 +14,7 @@ class HoursController < EmployeesController
         erb :home
     end
 
-    post '/bcs/hours' do #do the same as above post with form (from :passage)
+    post '/bcs/hours' do #Hour.create from passage.erb
         @session = session
 
         @day= "Sunday"
@@ -49,6 +49,7 @@ class HoursController < EmployeesController
         @session[:sunday_out] = @newhours[:sunday_out]
         @session[:hours_id] = @newhours[:id]
         @session[:counter] = @newhours[:counter]
+        @session[:tracker] = @newhours[:tracker]
 
         @day= "Sunday"
         @date = Hour.new 
@@ -61,17 +62,23 @@ class HoursController < EmployeesController
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @session = session
-        puts @session[:conunter]
-        @newhours = Hour.find_by(:id => @session[:hours_id])
+        puts @session[:counter]
+
         @date = Hour.new #for date
         @day= "Sunday"
         @week =  @date.date_of_next(@day)
         @d = Time.new
 
-        @counter = @newhours[:counter]
-        puts "----------check --------------->"
-        puts @counter
-        erb :"/profile/hours_edit"
+        @newhours = Hour.find_by(:id => @session[:hours_id])
+        if @newhours[:tracker].odd? && @newhours[:tracker] != 1
+            flash[:notice] = "You've worked long enough for today. Hours already submitted"
+            redirect '/bcs/profile/:badge_id/hours' 
+        else
+            @counter = @newhours[:counter]
+            puts "----------check --------------->"
+            puts @counter
+            erb :"/profile/hours_edit"
+        end
     end
 
     patch '/new_hours/:hours_id' do 
@@ -80,16 +87,19 @@ class HoursController < EmployeesController
         @newhours = Hour.find_by_id(params[:id])
         @newhours.update(params[:hours])
         counter = @newhours[:counter]
+        tracker = @newhours[:tracker]
             counter = counter.to_i
             counter +=1
+            tracker +=1
+            @newhours[:tracker] = tracker
             if counter == 3
                 @newhours[:counter] = "1"
             else
                 @newhours[:counter] = counter
             end
         @newhours.save
-        puts counter
-        puts @newhours[:counter] #rmove this
+        puts @newhours[:tracker] #rmove this
+        puts @newhours[:counter] #rmove this 
         @session[:badge_id]= @newhours[:badge_id]
     
         flash[:notice] =  "Time Card has been Updated." 
