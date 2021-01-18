@@ -19,9 +19,6 @@
 <p><input type= "text" placeholder= "Quick Search" readonly="readonly"</p>
 <main>
 <br/>
-<%= flash[:notice] do |msg|%>
-    <%= msg%>
-  <% end %>
 <div id = "search1">
 <form action= "/bcs/hr_portal/search/search" method= "post"> 
     <p><label>Badge ID </label>
@@ -37,6 +34,5 @@
 </form>
     </div>
     </main>
-    <button id="profile_submit_btn"> <a href="/">Exit HR Portal</a></button>
  </body>
 </html>

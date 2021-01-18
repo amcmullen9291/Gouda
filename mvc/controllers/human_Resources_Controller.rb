@@ -8,7 +8,7 @@ class HumanResourcesController < EmployeesController
   get '/bcs/hr_portal'  do 
     @session = session
     if @session[:office] == "YES"
-      erb :"hr_profile/show", :layout => false
+      erb :"hr_profile/show"
     else
       flash[:notice] = "You are not authorized to view this information"
       erb :verification, :layout => false
