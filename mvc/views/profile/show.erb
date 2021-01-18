@@ -163,7 +163,8 @@
             <form action="/bcs/post_week/:badge_id" method="post">
             <input type="text" hidden name="week[employee_id]" value=<%=@session[:id]%>>
             <input type="text" hidden name="week[badge_id]" value=<%=@session[:badge_id]%>>
-            <input type="text" hidden name="week[dept_id]" value=<%= @date.date_of_next(@day)%>>
+            <input type="text" hidden name="week[dept_id]" value=<%=@session[:dept_id]%>>   
+            <input type="text" hidden name="week[week_ending]" value=<%= @date.date_of_next(@day)%>>
             <button type="submit" class="Timecard_Submit">Submit Completed Timecard</button>
             </br>
             </form>        

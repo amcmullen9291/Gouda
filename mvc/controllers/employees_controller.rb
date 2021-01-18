@@ -76,7 +76,7 @@ class EmployeesController < Sinatra::Base
       redirect '/bcs/profile/:badge_id/hours'  #redirect to Hours controller
     else
       flash[:notice] =  "Password or Badge ID not recognized. Please try again"
-      flash[]:notice]
+      flash[:notice]
       redirect '/bcs/login'
     end
   end

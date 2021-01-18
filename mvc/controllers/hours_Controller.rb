@@ -46,7 +46,7 @@ class HoursController < EmployeesController
         @session[:saturday_in] = @newhours[:saturday_in]
         @session[:saturday_out] = @newhours[:saturday_out]
         @session[:sunday_in] = @newhours[:sunday_in]
-        @session[:sunday_in] = @newhours[:sunday_in]
+        @session[:sunday_out] = @newhours[:sunday_out]
         @session[:hours_id] = @newhours[:id]
         @session[:counter] = @newhours[:counter]
 
