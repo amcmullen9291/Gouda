@@ -4,4 +4,5 @@ use Rack::MethodOverride
 use HoursController
 use WeeksController
 use HumanResourcesController
-run EmployeesController.new
+use EmployeesController
+run ApplicationController.new

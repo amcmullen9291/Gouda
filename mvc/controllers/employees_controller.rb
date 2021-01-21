@@ -4,7 +4,7 @@ require 'rack-flash'
 
 require_relative '../../config/environment'
 
-class EmployeesController < Sinatra::Base
+class EmployeesController < ApplicationController
   configure do
     set :public_folder, 'public'
     set :views, 'mvc/views' 
@@ -14,12 +14,7 @@ class EmployeesController < Sinatra::Base
     use Rack::Flash, :accessorize => [:notice, :error]
   end
 
-  get '/' do
-    @session = session
-    session.clear
-    erb :home, :layout => false
-  end
-
+  
   get '/bcs/login' do 
     @session = session
     session.clear
