@@ -16,4 +16,9 @@ class Hour < ActiveRecord::Base
         date + delta
     end
 
+    def reset_counter
+        sleep(600)
+        @newhours[:tracker] = 1
+    end
+
 end
