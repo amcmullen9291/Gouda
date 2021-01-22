@@ -55,14 +55,12 @@ class HoursController < EmployeesController
         @date = Hour.new 
         @week =  @date.date_of_next(@day)    
         @d = Time.now
-        puts @newhours[:counter]
         
         erb :"profile/show"
     end
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @session = session
-        puts @session[:counter]
 
         @date = Hour.new #for date
         @day= "Sunday"
@@ -71,15 +69,12 @@ class HoursController < EmployeesController
         weekday = @d.strftime("%A")
         workday = weekday.downcase
         symboled = workday+"_out"
-        puts symboled
         @newhours = Hour.find_by(:id => @session[:hours_id])
         if @newhours[:tracker].odd? && @newhours[:"#{symboled}"].present?
             flash[:notice] = "You've worked long enough for today. Hours already submitted"
             redirect '/bcs/profile/:badge_id/hours' 
         else
             @counter = @newhours[:counter]
-            puts "----------check --------------->"
-            puts @counter
 
             erb :"/profile/hours_edit"
         end
@@ -102,8 +97,6 @@ class HoursController < EmployeesController
                 @newhours[:counter] = counter
             end
         @newhours.save
-        puts @newhours[:tracker] #rmove this
-        puts @newhours[:counter] #rmove this 
         @session[:badge_id]= @newhours[:badge_id]
        
         flash[:notice] =  "Time Card has been Updated." 

@@ -53,6 +53,7 @@ class EmployeesController < ApplicationController
 
     erb :"profile/new_profile/show"
   end
+  
 #------------ first route with a symbol--------->
   get '/bcs/profile/:badge_id' do 
     @session = session
