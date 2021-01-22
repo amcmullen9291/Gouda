@@ -18,4 +18,3 @@ gem 'bootstrap', '~> 4.5', '>= 4.5.3'
 
 gem 'bundler', '~> 2.2', '>= 2.2.4'
 gem 'shotgun', '~> 0.9.2'
-gem 'tux'
