@@ -110,7 +110,11 @@ class EmployeesController < ApplicationController
   get '/bcs/profile/:badge_id/newhours' do 
     @session = session
     @employee = Employee.find_by(:badge_id => @session[:badge_id])
-    @newhours = @employee.hours
+    if @employee.hours.empty?
+      @employee.hours << @newhours = Hour.find_by(:employee_id => @session[:id])
+    else
+      @newhours = @employee.hours
+    end
 
       @day= "Sunday"
       @date = Hour.new 
