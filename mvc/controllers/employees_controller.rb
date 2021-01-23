@@ -29,12 +29,10 @@ class EmployeesController < ApplicationController
 
   post '/bcs/new_employee' do
     @employee = Employee.create(params[:employee])
-    # @employee.save
 
     @session = session
     @session[:id] = @employee.id
     @session[:badge_id] = @employee.badge_id
-    # @session[:dept_id] = @employee.dept_id
     @day= "Sunday"
     @date = Hour.new 
     @week =  @date.date_of_next(@day) 
