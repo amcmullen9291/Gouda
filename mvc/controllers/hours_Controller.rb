@@ -83,7 +83,7 @@ class HoursController < EmployeesController
     patch '/new_hours/:hours_id' do 
         @session = session
         # Hour.connection #unneeded now that config is aware...
-        @newhours = Hour.find_by_id(params[:id])
+        @newhours = Hour.find_by(:employee_id => @session[:id])
         @newhours.update(params[:hours])
         counter = @newhours[:counter]
         tracker = @newhours[:tracker]
@@ -96,11 +96,26 @@ class HoursController < EmployeesController
             else
                 @newhours[:counter] = counter
             end
-        @newhours.save
-        @session[:badge_id]= @newhours[:badge_id]
+
+            @newhours.save
+      @session[:monday_in] = @newhours[:monday_in]
+      @session[:monday_out] = @newhours[:monday_out]
+      @session[:tuesday_in] = @newhours[:tuesday_in]
+      @session[:tuesday_out] = @newhours[:tuesday_out]
+      @session[:wednesday_in] = @newhours[:wednesday_in]
+      @session[:wednesday_out] = @newhours[:wednesday_out]
+      @session[:thursday_in] = @newhours[:thursday_in]
+      @session[:thursday_out] = @newhours[:thursday_out]
+      @session[:friday_in] = @newhours[:friday_in]
+      @session[:friday_out] =  @newhours[:friday_out]
+      @session[:saturday_in] = @newhours[:saturday_in]
+      @session[:saturday_out] = @newhours[:saturday_out]
+      @session[:sunday_in] = @newhours[:sunday_in]
+      @session[:sunday_out] = @newhours[:sunday_out]
        
+      puts counter
         flash[:notice] =  "Time Card has been Updated." 
-        redirect '/bcs/profile/:badge_id/hours' 
+        redirect '/bcs/profile/:badge_id/newhours' 
     end
 
     delete '/bcs/profile/:id/reset' do # A new Week Class instance progression
