@@ -38,8 +38,8 @@ class EmployeesController < ApplicationController
   end
 
   post '/bcs/new_employee' do
-    @employee = Employee.new(params[:employee])
-    @employee.save
+    @employee = Employee.create(params[:employee])
+    # @employee.save
 
     @session = session
     @session[:id] = @employee.id
@@ -63,21 +63,22 @@ class EmployeesController < ApplicationController
       @newhours = @employee.hours
       @session[:id] = @employee[:id]
       @session[:badge_id] = params[:employee][:badge_id]
-      @session[:hours_id] = @newhours[:id]
-      @session[:monday_in] = @newhours[:monday_in]
-      @session[:monday_out] = @newhours[:monday_out]
-      @session[:tuesday_in] = @newhours[:tuesday_in]
-      @session[:tuesday_out] = @newhours[:tuesday_out]
-      @session[:wednesday_in] = @newhours[:wednesday_in]
-      @session[:wednesday_out] = @newhours[:wednesday_out]
-      @session[:thursday_in] = @newhours[:thursday_in]
-      @session[:thursday_out] = @newhours[:thursday_out]
-      @session[:friday_in] = @newhours[:friday_in]
-      @session[:friday_out] =  @newhours[:friday_out]
-      @session[:saturday_in] = @newhours[:saturday_in]
-      @session[:saturday_out] = @newhours[:saturday_out]
-      @session[:sunday_in] = @newhours[:sunday_in]
-      @session[:sunday_out] = @newhours[:sunday_out]
+      puts @newhours
+      # @session[:hours_id] = @newhours[:id]
+      # @session[:monday_in] = @newhours[:monday_in]
+      # @session[:monday_out] = @newhours[:monday_out]
+      # @session[:tuesday_in] = @newhours[:tuesday_in]
+      # @session[:tuesday_out] = @newhours[:tuesday_out]
+      # @session[:wednesday_in] = @newhours[:wednesday_in]
+      # @session[:wednesday_out] = @newhours[:wednesday_out]
+      # @session[:thursday_in] = @newhours[:thursday_in]
+      # @session[:thursday_out] = @newhours[:thursday_out]
+      # @session[:friday_in] = @newhours[:friday_in]
+      # @session[:friday_out] =  @newhours[:friday_out]
+      # @session[:saturday_in] = @newhours[:saturday_in]
+      # @session[:saturday_out] = @newhours[:saturday_out]
+      # @session[:sunday_in] = @newhours[:sunday_in]
+      # @session[:sunday_out] = @newhours[:sunday_out]
 
       @day= "Sunday"
       @date = Hour.new 

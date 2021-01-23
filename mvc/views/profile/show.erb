@@ -89,7 +89,7 @@
         <tbody>
         <tr>
                <td><input type= "text" name= "hours[week_ending]" hidden value= <%= @date.date_of_next(@day) %>></td>
-               <td><input type= "text" name= "hours[dept_id]" hidden value= <%= @newhours.dept_id]%>></td>
+               <td><input type= "text" name= "hours[dept_id]" hidden value=1492 ></td>
                <td><input type= "text" name= "hours[badge_id]" hidden value= <%=@session[:badge_id] %>></td>
                <td><input type= "text" name= "hours[last_name]" hidden value= 1472 ></td>
            <td></td>
@@ -149,7 +149,7 @@
             <td colspan="8">Current Time:</td>
           </tr>
           <tr>
-          <td><input type="integer" name= "counter" hidden value= <%= @newhours.counter%>></td>
+          <td></td>
           <td colspan="8"><c><input type= "time" readonly="readonly" name= "time" value= <%=@d.strftime("%R")%>></c></td>
           </tr>
         </tbody>

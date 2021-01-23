@@ -69,7 +69,7 @@ class HoursController < EmployeesController
         weekday = @d.strftime("%A")
         workday = weekday.downcase
         symboled = workday+"_out"
-        @newhours = Hour.find_by(:id => @session[:hours_id])
+        @newhours = Hour.find_by(:employee_id => @session[:id])
         if @newhours[:"#{symboled}"].present?
             flash[:notice] = "You've worked long enough for today. Hours already submitted"
             redirect '/bcs/profile/:badge_id/hours' 
