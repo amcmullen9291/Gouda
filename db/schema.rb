@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_050142) do
+ActiveRecord::Schema.define(version: 2021_01_23_064049) do
 
   create_table "employees", force: :cascade do |t|
     t.string "badge_id"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_050142) do
     t.string "sunday_out"
     t.string "counter", default: "1"
     t.integer "employee_id"
-    t.integer "tracker", default: 1
   end
 
   create_table "weeks", force: :cascade do |t|

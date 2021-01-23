@@ -142,7 +142,7 @@ class EmployeesController < ApplicationController
 
   delete '/bcs/profile/:id' do 
     @session = session
-    flash[:notice] = "profile deleted" #see if @employee.first_name / @employee.last_name persists for flash
+    flash[:notice] = "profile deleted"
 
     Employee.delete(@session[:id])
 

@@ -73,11 +73,8 @@ class HoursController < EmployeesController
         @newhours = Hour.find_by(:employee_id => @session[:id])
         @newhours.update(params[:hours])
         counter = @newhours[:counter]
-        tracker = @newhours[:tracker]
             counter = counter.to_i
             counter +=1
-            tracker +=1
-            @newhours[:tracker] = tracker
             if counter == 3
                 @newhours[:counter] = "1"
             else
