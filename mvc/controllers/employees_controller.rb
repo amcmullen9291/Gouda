@@ -1,7 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'rack-flash'
-
 require_relative '../../config/environment'
 
 class EmployeesController < ApplicationController
@@ -60,10 +59,11 @@ class EmployeesController < ApplicationController
     @session = session
     @employee = Employee.find_by(:badge_id => params[:employee][:badge_id])
     if @employee && @employee.authenticate(params[:employee][:password])
-      @newhours = Hour.find_by(:employee_id => @session[:id])
-      @newhours = @employee.hours
       @session[:id] = @employee[:id]
       @session[:badge_id] = params[:employee][:badge_id]
+
+      @newhours = Hour.find_by(:employee_id => @session[:id])
+      # @newhours = @employee.hours
       puts @newhours
       @session[:hours_id] = @newhours[:id]
       @session[:monday_in] = @newhours[:monday_in]
@@ -110,16 +110,6 @@ class EmployeesController < ApplicationController
     @employee.update(params[:employee])
     @employee.save
 
-    # @session[:badge_id] = @employee[:badge_id]
-    # @session[:last_name] = @employee[:last_name]
-    # @session[:id] = @employee[:id]
-    # @session[:shift_id] = @employee[:shift_id]
-    # @session[:first_name] = @employee[:first_name]
-    # @session[:dept_id] = @employee[:dept_id]
-    # @session[:email] = @employee[:email]
-    # @session[:telephone] = @employee[:telephone]
-    # @session[:password] = @employee[:password]
-
     @date = Hour.new
     @day= "Sunday"
     @week =  @date.date_of_next(@day)
@@ -133,7 +123,7 @@ class EmployeesController < ApplicationController
   get '/bcs/profile/:badge_id/newhours' do 
     @session = session
     @employee = Employee.find_by(:badge_id => @session[:badge_id])
-    @newhours = Hour.find_by(:employee_id => @session[:id])
+    @newhours = Hour.find_by(:badge_id => @session[:badge_id])
 
       @day= "Sunday"
       @date = Hour.new 

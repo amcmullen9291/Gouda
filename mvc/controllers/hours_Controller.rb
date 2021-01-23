@@ -21,43 +21,30 @@ class HoursController < EmployeesController
         @date = Hour.new 
         @week =  @date.date_of_next(@day)
 
-        @hour = Hour.new
-        @hour[:employee_id] = params[:id]
-        @hour[:badge_id] = @session[:badge_id]
-        @hour[:week_ending] = @week
-        @hour.save
-        redirect "/bcs/profile/:badge_id/hours"
+        @newhours = Hour.new
+        @newhours[:employee_id] = @session[:id]
+        @newhours[:badge_id] = @session[:badge_id]
+        @newhours[:week_ending] = @week
+        @newhours.save
+
+        @session[:hours_id] = @newhours[:id]
+        @session[:monday_in] = @newhours[:monday_in]
+        @session[:monday_out] = @newhours[:monday_out]
+        @session[:tuesday_in] = @newhours[:tuesday_in]
+        @session[:tuesday_out] = @newhours[:tuesday_out]
+        @session[:wednesday_in] = @newhours[:wednesday_in]
+        @session[:wednesday_out] = @newhours[:wednesday_out]
+        @session[:thursday_in] = @newhours[:thursday_in]
+        @session[:thursday_out] = @newhours[:thursday_out]
+        @session[:friday_in] = @newhours[:friday_in]
+        @session[:friday_out] =  @newhours[:friday_out]
+        @session[:saturday_in] = @newhours[:saturday_in]
+        @session[:saturday_out] = @newhours[:saturday_out]
+        @session[:sunday_in] = @newhours[:sunday_in]
+        @session[:sunday_out] = @newhours[:sunday_out]
+  
+        redirect "/bcs/profile/:badge_id/newhours"
     end
-
-    # get '/bcs/profile/:badge_id/hours' do
-    #     puts params
-    #     @session = session 
-    #     @newhours = Hour.find_by_badge_id(badge_id = @session[:badge_id])
-    #     @session[:monday_in] = @newhours[:monday_in]
-    #     @session[:monday_out] = @newhours[:monday_out]
-    #     @session[:tuesday_in] = @newhours[:tuesday_in]
-    #     @session[:tuesday_out] = @newhours[:tuesday_out]
-    #     @session[:wednesday_in] = @newhours[:wednesday_in]
-    #     @session[:wednesday_out] = @newhours[:wednesday_out]
-    #     @session[:thursday_in] = @newhours[:thursday_in]
-    #     @session[:thursday_out] = @newhours[:thursday_out]
-    #     @session[:friday_in] = @newhours[:friday_in]
-    #     @session[:friday_out] =  @newhours[:friday_out]
-    #     @session[:saturday_in] = @newhours[:saturday_in]
-    #     @session[:saturday_out] = @newhours[:saturday_out]
-    #     @session[:sunday_in] = @newhours[:sunday_in]
-    #     @session[:sunday_out] = @newhours[:sunday_out]
-    #     @session[:hours_id] = @newhours[:id]
-    #     @session[:counter] = @newhours[:counter]
-    #     @session[:tracker] = @newhours[:tracker]
-
-    #     @day= "Sunday"
-    #     @date = Hour.new 
-    #     @week =  @date.date_of_next(@day)    
-    #     @d = Time.now
-        
-    #     erb :"profile/show"
-    # end
 
     get '/bcs/profile/:badge_id/hours/edit' do
         @session = session
@@ -72,7 +59,7 @@ class HoursController < EmployeesController
         @newhours = Hour.find_by(:employee_id => @session[:id])
         if @newhours[:"#{symboled}"].present?
             flash[:notice] = "You've worked long enough for today. Hours already submitted"
-            redirect '/bcs/profile/:badge_id/hours' 
+            redirect '/bcs/profile/:badge_id/newhours' 
         else
             @counter = @newhours[:counter]
 
@@ -112,8 +99,8 @@ class HoursController < EmployeesController
       @session[:saturday_out] = @newhours[:saturday_out]
       @session[:sunday_in] = @newhours[:sunday_in]
       @session[:sunday_out] = @newhours[:sunday_out]
+      @session[:hours_id] = @newhours[:id]
        
-      puts counter
         flash[:notice] =  "Time Card has been Updated." 
         redirect '/bcs/profile/:badge_id/newhours' 
     end
