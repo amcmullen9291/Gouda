@@ -61,8 +61,8 @@
                             <input type="submit" value="submit">
                             <a href= "#">I digress</a>
                             </form>
-                            <% if flash.now[:notice] = "Of all the gin joints in all the towns in all the world, she walks into mine. -Rick Blaine"%>
-                            <%= @lighthearted %>
+                            <% if flash[:notice]%>
+                            <%= @notice %>
                             <%end%>
                             </div>
                             </br>
