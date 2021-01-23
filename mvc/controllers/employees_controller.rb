@@ -4,15 +4,6 @@ require 'rack-flash'
 require_relative '../../config/environment'
 
 class EmployeesController < ApplicationController
-  configure do
-    set :public_folder, 'public'
-    set :views, 'mvc/views' 
-    set :sessions => true
-    set :session_secret, '0cd545040d'
-    register Sinatra::Flash
-    use Rack::Flash, :accessorize => [:notice, :error]
-  end
-
   
   get '/bcs/login' do 
     @session = session
@@ -62,9 +53,7 @@ class EmployeesController < ApplicationController
       @session[:id] = @employee[:id]
       @session[:badge_id] = params[:employee][:badge_id]
 
-      @newhours = Hour.find_by(:employee_id => @session[:id])
-      # @newhours = @employee.hours
-      puts @newhours
+      @employee.hours << @newhours = Hour.find_by(:employee_id => @session[:id])
       @session[:hours_id] = @newhours[:id]
       @session[:monday_in] = @newhours[:monday_in]
       @session[:monday_out] = @newhours[:monday_out]
@@ -123,7 +112,7 @@ class EmployeesController < ApplicationController
   get '/bcs/profile/:badge_id/newhours' do 
     @session = session
     @employee = Employee.find_by(:badge_id => @session[:badge_id])
-    @newhours = Hour.find_by(:badge_id => @session[:badge_id])
+    @newhours = @employee.hours
 
       @day= "Sunday"
       @date = Hour.new 
